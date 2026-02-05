@@ -1,0 +1,1228 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.document {
+    font-family:monospace;
+}
+
+.block {
+    position: absolute;
+/*
+    width: inherit;
+    height: inherit;
+    background: -moz-linear-gradient(bottom, #f1f5fb 0%, #fff 90%);
+    background: -webkit-linear-gradient(bottom, #f1f5fb 0%, #fff 90%);
+    background: -o-linear-gradient(bottom, #f1f5fb 0%, #fff 90%);
+    background: -ms-linear-gradient(bottom, #f1f5fb 0%, #fff 90%);
+    background: linear-gradient(bottom, #f1f5fb 0%, #fff 90%);
+*/
+}
+
+.block_l_5_t_405 {
+    left: 0px;
+    top: 405px;
+    position: absolute;
+    width: inherit;
+	height: inherit;
+	background: -moz-linear-gradient(bottom, #f1f5fb 0%, #fff 90%);
+	background: -webkit-linear-gradient(bottom, #f1f5fb 0%, #fff 90%);
+	background: -o-linear-gradient(bottom, #f1f5fb 0%, #fff 90%);
+	background: -ms-linear-gradient(bottom, #f1f5fb 0%, #fff 90%);
+	background: linear-gradient(bottom, #f1f5fb 0%, #fff 90%);
+}
+
+.block_title {
+    position: absolute;
+    width: inherit;
+    font-family:monospace;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #2A5082;
+	text-transform: uppercase;
+	padding: 2px;
+	margin-top: 2px;
+	margin-left: 2px;
+    background-color: transparent; /*#B2C2D0; /*#8CACDA; /*#A5ADBF;*/
+	
+}
+
+.block_status {
+    position: absolute;
+    width: inherit;
+    font-family:monospace;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: 400;
+/*	text-transform: uppercase; */
+	padding: 0px;
+	margin-top: 2px;
+	margin-left: 2px;
+    background-color: darkgray;	/*transparent; /*#B2C2D0; /*#8CACDA; /*#A5ADBF;*/
+}
+
+.block_title_l_2 {
+    left: 2px;
+    position: absolute;
+    width: inherit;
+    font-family:monospace;
+	letter-spacing: 1px;
+    font-size: 16px;
+	font-weight: 400;
+    color: #2A5082;
+	text-transform: uppercase;
+	padding: 2px;
+	margin-top: 2px;
+	margin-left: 2px;
+    background-color: transparent; /*#B2C2D0; /*#8CACDA; /*#A5ADBF;*/
+	
+}
+
+.block_title_l_220 {
+    left: 220px;
+    position: absolute;
+    width: inherit;
+    font-family:monospace;
+	letter-spacing: 1px;
+    font-size: 16px;
+	font-weight: 400;
+    color: #2A5082;
+	text-transform: uppercase;
+	padding: 2px;
+	margin-top: 2px;
+	margin-left: 2px;
+    background-color: transparent; /*#B2C2D0; /*#8CACDA; /*#A5ADBF;*/
+	
+}
+
+.block_body {
+    position: absolute;
+	width: inherit;
+	top: 35px;
+	left: 0px;
+}
+
+.button {
+    color: white;
+	background: linear-gradient(to top, #9EAFD4, #F1F5FB);
+    font-family:monospace;
+    font-size: 20px;
+    text-align: center;
+	text-transform: uppercase;
+    margin: 3px;
+	padding: 4px;
+    cursor: pointer;
+	border: 1px solid #8cacda;
+	border-radius: 3px 3px 3px 3px;
+}
+
+.platforma_on {
+    font-family:monospace;
+    color: white;
+    background: #67A979;
+	border-style: solid;
+	border-color: #67A979;
+	border-width: 1px;
+    font-size: 14px;
+    text-align: center;
+    margin: 5px 0px 5px 3px; 
+    cursor: pointer;
+    height: 24px; 
+    padding-top: 6px;
+}
+
+.platforma_off {
+    font-family:monospace;
+    color: darkgray;
+    background: white;
+	border-style: solid;
+	border-color: #67A979;
+	border-width: 1px;
+    font-size: 14px;
+    text-align: center;
+    margin: 5px 0px 5px 3px; 
+    cursor: pointer;
+    height: 24px; 
+    padding-top: 6px;
+}
+
+/* Датчик колеса */
+.wd {
+	background: orange;
+	border: orange solid 0px;
+	width: 12px;
+	height: 8px;
+	top: 4px;	
+	float: left;
+	position: absolute;
+
+}
+
+/* Вид индикаторов */
+.ind_contayner { /* Контейнер с индикатором */
+    position: absolute;
+	width: 185px;
+    height: 28px;    // 34px;
+	border-radius: 10px;
+    border: 1px solid #B2C2D0;
+    background-color: transparent;
+    margin: 3px;
+	padding: 0px;
+    overflow: hidden;
+}
+
+.ind_switch {
+    font-family:monospace;
+    color: teal;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid darkgray;
+    font-size: 18px;
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.ind_opac { /* Прозрачность подложки индикатора */
+    position: absolute;
+	width: inherit;
+    height: 28px;      //34px;
+	margin 1px;
+    background-color: white;
+	opacity: 0.7;
+    top: 0px;
+	left: 0px;
+	padding: 0px;
+}
+
+.ind_str { /* Информационное поле индикатора */
+    position: absolute;
+    width: inherit;
+    height: 18px;
+    top: 4px;    //7px;
+    font-family:monospace;
+	letter-spacing: 1px;
+	font-weight: 600;
+	font-size: 16px;
+    text-align: center;
+	text-transform: uppercase;
+	color: #67A979; /*#66B821; /* Зеленый */ /*#B2C2D0;*/
+    background-color: transparent;
+	opacity: 1;
+}
+
+.wagon {
+/*	display: inline-block; */
+    font-family:monospace;
+	font-size: 18px;
+    text-align: center;	
+	color: green;
+	width: 34px;
+	height: 24px;
+	border: 1px solid darkgray;
+	border-radius: 5px;
+	float: left;
+	margin: 1px;
+    background-color:white;
+}
+.cur_wagon {
+/*	display: inline-block; */
+    font-family:monospace;
+	font-size: 18px;
+    text-align: center;	
+	color: white;
+	width: 34px;
+	height: 24px;
+	border: 1px solid darkgray;
+	border-radius: 5px;
+	float: left;
+	margin: 1px;
+    background-color: green;
+}
+
+
+.tabs {
+    width: 800px;
+	height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid lightgray;
+}
+
+.tabs__nav {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    background: #f8f8f8;
+    margin: 0;
+    border-bottom: 1px solid lightgray;
+}
+
+
+.tabs__link {
+    padding: 1px 1px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+
+.tabs__link_active {
+    background: lightgray;
+    cursor: default;
+}
+
+.tabs__link:not(.tabs__link_active):hover,
+.tabs__link:not(.tabs__link_active):focus,
+.tabs__link_ver:not(.tabs__link_active):hover,
+.tabs__link_ver:not(.tabs__link_active):focus
+ {
+    background-color: #efefef;
+}
+
+.tabs__content {
+    padding: 10px 4px;
+	height: 375px;
+	overflow-y: scroll;
+	scroll-behavior: smooth; /* <--- */
+}
+
+
+.tabs__pane {
+    display: none;
+}
+
+.tabs__pane_show {
+    display: block;
+}
+
+
+/*
+.tabs {
+    font-size: 0;
+    max-width: 800px;
+    max-height: 500px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.tabs>input[type="radio"] {
+    display: none;
+}
+*/
+
+/* скрыть контент по умолчанию */
+/*
+.tabs>div {
+    display: none;
+    border: 1px solid #e0e0e0;
+    padding: 1px 1px;
+    font-size: 16px;
+}
+
+.tabs>label {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    padding: 2px 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+}
+
+.tabs>label:not(:first-of-type) {
+    border-left: none;
+}
+
+.tabs>input[type="radio"]:checked+label {
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+}
+*/
+
+/* отобразить контент, связанный с вабранной радиокнопкой (input type="radio") */
+/*
+#tab-btn-1:checked~#content-1,
+#tab-btn-2:checked~#content-2,
+#tab-btn-3:checked~#content-3,
+#tab-btn-4:checked~#content-4,
+#tab-btn-5:checked~#content-5,
+#tab-btn-6:checked~#content-6,
+#tab-btn-7:checked~#content-7
+ {
+	display: block;
+}
+*/
+/*
+.weight_info {
+	opacity: 0.7;
+	float: left;
+    color: #2A5082;
+}
+*/
+.clear {
+    clear: both;
+}
+
+.range_info {
+	font-family:monospace;	
+    color: #2A5082;
+	background-color: /*#B2C2D0;*//*darkgray;*/	transparent; /*#B2C2D0; /*#8CACDA; /*#A5ADBF;*/	
+//	border-radius: 3px 3px 3px 3px;	
+	padding-top: 2px;
+	padding-left: 2px;
+	padding-right: 5px;
+//	color: #fff;
+	text-align: right;
+	float: left;
+	font-size:100%;
+	border: 0px solid #fff;
+	border-right: 1px solid #fff;
+	white-space: pre;
+//	height: 100%;
+}
+
+.weight_info {
+	font-family:monospace;	
+	float: left;
+    color: #2A50AA;
+	font-weight: bold;
+	background-color: transparent;
+}
+
+.equal {
+	float: left;
+	padding-top: 5px;
+	padding-left: 1px;
+}
+#id_stability, #id_weight,#id_weight_unit {
+	font-family:monospace;	
+	padding-top: 5px;
+	padding-left: 3px;
+	font-weight: bold;
+	font-size: 160%;
+	height: 28px;
+/*	width: 10px;*/
+/*	float: left; */
+}
+
+#id_stability_static,  #id_weight_static, #id_weight_unit_static { 
+	font-family:monospace;	
+	padding-top: 12px;
+	padding-left: 3px;
+	font-weight: bold;
+	font-size: 200%;
+	height: 28px;
+/*	width: 10px;*/
+/*	float: left; */
+}
+
+
+
+#id_weight_tare {
+    text-align: left;
+	padding-top: 7px;
+	padding-left: 1px;
+}
+
+#id_weight_type {
+	padding-top: 4px; 
+	padding-left: 34px;
+	font-weight: bold;
+	font-size: 110%;
+}
+
+#id_weight_tare_static {
+    text-align: left;
+	padding-top: 5px;
+	padding-left: 1px;
+	font-size: 140%;
+}
+
+
+#id_weight_type_static
+{
+	padding-top: 6px; 
+	padding-left: 80px;
+	font-weight: bold;
+	font-size: 140%;
+}
+
+#results_train { /* Окно с результатами */
+	display: none;
+    position: absolute;
+	width: inherit;
+	height: 220px;
+	top: 25px;
+	left: 10px;
+    font-family:monospace;
+	font-size: 16px;
+	
+	overflow-y: auto;	
+}
+
+#ind_cntrl_line {  /* Подложка под информационное поле индикатора */
+    position: absolute;
+    top: 4px; //8px;
+    left: 0;
+    width: inherit;
+    height: 18px;
+    border: none;
+    background-color: #B2C2D0;
+    overflow: hidden;
+}
+
+#img_left_2 { /* Левая часть изображения 2-осного вагона */
+	opacity: 0;
+	display: block;
+	position: absolute;
+	clear: both;
+	top: 35px;
+	left: 0px;
+	width: 304px;
+	height: 180px;
+	background-image: url("images/2_axles_left.png");
+	background-size: cover;
+	background-origin: inherit;
+	transition: all ease 1000ms;
+}
+
+#img_left_4 { /* Левая часть изображения 4-осного вагона */
+	opacity: 0;
+	display: block;
+	position: absolute;
+	clear: both;
+	top: 35px;
+	left: 0px;
+	width: 304px;
+	height: 180px;
+	background-image: url("images/4_axles_left.png");
+	background-size: cover;
+	background-origin: inherit;
+	transition: all ease 1000ms;	
+}
+
+#img_left_6 { /* Левая часть изображения 6-осного вагона */
+	opacity: 0;
+	display: block;
+	position: absolute;
+	clear: both;
+	top: 35px;
+	left: 0px;
+	width: 304px;
+	height: 180px;
+	background-image: url("images/6_axles_left.png");
+	background-size: cover;
+	background-origin: inherit;
+	transition: all ease 1000ms;	
+}
+
+#img_left_8 { /* Левая часть изображения 8-осного вагона */
+	opacity: 0;
+	display: block;
+	position: absolute;
+	clear: both;
+	top: 35px;
+	left: 0px;
+	width: 304px;
+	height: 180px;
+	background-image: url("images/8_axles_left.png");
+	background-size: cover;
+	background-origin: inherit;
+	transition: all ease 1000ms;	
+}
+
+#img_loco { /* Изображение локомотива */
+	opacity: 0;
+	display: block;
+	position: absolute;
+	clear: both;
+	top: 68px;
+	left: 0px;
+	width: 610px;
+	height: 220px;
+	background-image: url("images/loko.png");
+	background-size: 610px 220px;
+	background-origin: inherit;
+	transition: all ease 1000ms;	
+}
+
+#img_loco_left_right { /* Изображение локомотива */
+	opacity: 0;
+	display: block;
+	position: absolute;
+	clear: both;
+	top: 35px;
+	left: 0px;
+	width: 614px;
+	height: 180px;
+	background-image: url("images/Loco_left_right.png");
+	background-size: cover;
+	background-origin: inherit;
+	transition: all ease 1000ms;	
+}
+
+#img_loco_right_left { /* Изображение локомотива */
+	opacity: 0;
+	display: block;
+	position: absolute;
+	clear: both;
+	top: 35px;
+	left: 0px;
+	width: 614px;
+	height: 180px;
+	background-image: url("images/Loco_right_left.png");
+	background-size: cover;
+/*	background-size: 610px 220px;*/
+	background-origin: inherit;
+	transition: all ease 1000ms;	
+}
+
+
+#img_right_2 { /* Правая часть изображения 2-осного вагона */
+	opacity: 0;
+	display: block;
+	position: absolute;
+	clear: left;
+	top: 35px;
+	left: 304px;
+	width: 304px;
+	height: 180px;
+	background-image: url("images/2_axles_right.png");
+	background-size: cover;
+	background-origin: inherit;
+	transition: all ease 1000ms;
+}
+
+#img_right_4 { /* Правая часть изображения 4-осного вагона */
+	opacity: 0;
+	display: block;
+	position: absolute;	
+	clear: left;
+	top: 35px;
+	left: 304px;
+	width: 304px;
+	height: 180px;
+	background-image: url("images/4_axles_right.png"); 
+	background-size: cover;
+	background-origin: inherit;
+	transition: all ease 1000ms;
+}
+
+#img_right_6 { /* Правая часть изображения 6-осного вагона */
+	opacity: 0;
+	display: block;
+	position: absolute;	
+	clear: left;
+	top: 35px;
+	left: 304px;
+	width: 304px;
+	height: 180px;
+	background-image: url("images/6_axles_right.png"); 
+	background-size: cover;
+	background-origin: inherit;
+	transition: all ease 1000ms;
+}
+
+#img_right_8 { /* Правая часть изображения 8-осного вагона */
+	opacity: 0;
+	display: block;
+	position: absolute;	
+	clear: left;
+	top: 35px;
+	left: 304px;
+	width: 304px;
+	height: 180px;
+	background-image: url("images/8_axles_right.png"); 
+	background-size: cover;
+	background-origin: inherit;
+	transition: all ease 1000ms;
+}
+
+
+#p_matrix, #p_tune, #p_results, #p_alarms, #p_logs, #p_diagnostics, #p_info { /* Окна контроллера */
+    width: 800px;
+    height: 480px;
+    overflow: hidden;
+    background-color: #FFFFFF;/*azure;*/
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#p_tune, #p_results, #p_alarms, #p_logs, #p_diagnostics, #p_info {
+	display: none;
+}
+
+#mode {
+    top: 15px;
+    left: 10px;
+    width: 170px;
+    height: 120px;
+}
+
+#process {
+	top: 15px;
+    left: 190px;
+    width: 450px;
+    height: 120px;
+}
+
+#tune {
+    top: 15px;
+    left: 650px;
+    width: 140px;
+    height: 120px;
+}
+
+#train {
+    top: 150px;
+    left: 10px;
+    width: 630px;
+    height: 290px;
+    background: white;
+}
+
+#journal {
+    top: 150px;
+    left: 650px;
+    width: 140px;
+    height: 180px;
+}
+
+#mode_static,#mode_static_1 {
+    top: 10px;
+    left: 10px;
+    width: 160px;
+    height: 60px;	//50px;
+    padding-top: 12px;
+}
+
+#state {
+    left: 77px; 
+    top: -6px;
+	width: 110px;
+    height: 34px;
+}
+
+#direct {
+  	position: relative;
+//  	display: inline-block;
+    
+    left: 2px; 
+    top: 0px;
+}
+
+#loco {
+      position: relative;
+    left: 2px;
+#    top: 40px;
+    top: 2px;
+}
+
+#dyn_axis {
+    display: none;
+      position: relative;
+    left: 2px;
+#    top: 40px;
+    top: 2px;
+    cursor: pointer;
+}
+
+#label_speed {
+    font-family:monospace;
+	font-weight: 400;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+    top: 5px; 
+    left: 205px;
+    width: 100px;
+	
+    text-align: center;
+    background-color: transparent;
+    color: #B2C2D0;
+    position: absolute;
+    font-size: 16px;
+    margin: 5px;
+}
+
+#label_target_weight {
+	display: none;
+    font-family:monospace;
+	font-weight: 600;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+    top: 5px; 
+    left: 205px;
+    width: 100px;
+	
+    text-align: center;
+    background-color: transparent;
+//    color: #B2C2D0;
+    color: #0A2869;
+    position: absolute;
+    font-size: 12px;
+    margin: 5px;
+}
+
+#input_weight {
+	display: none;
+    font-family:monospace;
+	font-weight: 400;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+    top: 2px; 
+    left: 320px;
+    width: 90px;
+ 
+    text-align: left;
+    background-color: transparent;
+//    color: #B2C2D0;
+    color: #0A2869;
+    position: absolute;
+    font-size: 16px;
+    margin: 5px;
+}
+
+#start_process {
+	display: none;
+	position: absolute;
+    left: 205px;
+    top:  40px;
+    width: 100px;
+    color: green;
+}
+
+#stop_process {
+	display: none;
+	position: absolute;
+    left: 320px;
+    top:  40px;
+    width: 100px;
+    color: red;
+}
+
+#speed {
+    font-family:monospace;
+    top: 40px; 
+    left: 205px;
+    width: 100px;
+    position: absolute;
+}
+
+#speed_val {
+    font-family:monospace;
+	color: #0A2869;
+/*    top: 75px; 
+    left: 205px;
+    width: inherit;
+    text-align: center;
+    background-color: white;
+    color: blue;
+    position: absolute;
+    font-size: 18px;
+    margin: 0px 5px 5px 5px;
+	padding-top: 5px;*/
+}
+
+#stop {
+    position: absolute;
+    top: -6px;
+    left: 325px;
+    width: 100px;
+/*    height: 26px;*/
+    text-align: center;
+/*    padding-top: 4px;
+    padding-right: 6px;
+	padding: 2px;*/
+    display:inline-block;
+}
+
+#confirmation {
+    position: absolute;
+    top: -6px;
+    left: 220px;
+    width: 110px;
+    text-align: center;
+    display:inline-block;
+}
+
+#reset {
+    position: absolute;
+    top: -6px;
+    left: 340px;
+    width: 100px;
+    text-align: center;
+    display:inline-block;
+    color: red;
+}
+
+#new_train {
+    position: absolute;
+    top: -6px;
+    left: 515px;
+    width: 100px;
+    text-align: center;
+    display:inline-block;
+}
+
+#start img {
+    position: absolute;    
+    float:left;
+    top: -1px;
+    left: 0px;
+    height:100%;
+}
+
+#revers {
+    left: 325px; 
+    top:  0px;
+    width: 110px;
+}
+
+#ind_str_revers_off {
+    position: absolute;
+    width: inherit;
+    height: 20px;
+    font-family:monospace;
+	font-weight: 600;
+	font-size: 16px;
+	text-transform: uppercase;
+	color: darkgray;
+    text-align: center;
+	letter-spacing: 1px;
+    background-color: transparent;
+	opacity: 1;
+    top: 4px;    //7px;
+   
+}
+
+#alarm {
+    left: 325px; 
+    top:  40px;
+    width: 110px;
+}
+
+/*
+#events {
+    left: 300px; 
+    top:  60px;
+    width: 160px;
+}
+*/
+#ind_str_alarm {
+    position: absolute;
+    width: inherit;
+    height: 20px;
+    font-family:monospace;
+	font-weight: 600;
+	font-size: 16px;
+    text-align: center;
+	text-transform: uppercase;
+	color: darkgray;
+	text-align: center;
+	letter-spacing: 1px;
+    background-color: transparent;
+	opacity: 1;
+    top: 4px;    //7px;
+}
+
+#num_train {
+    left: 150px;	//75px; 
+    top: -5px;
+    width: 90px;
+}
+
+#sum_weight {
+    left: 385px; 
+    top: -5px;
+    width: 100px;
+}
+
+#cntrl {
+    top: 445px;
+    left: 0px;
+    width: 630px;
+    height: 20px;
+/*    background: transparent; !!!!!!!Возможно оставить*/
+}
+
+#status {
+    top: 480px;
+    left: 0px;
+    width: 120px;
+    height: 20px;
+/*    background: transparent; !!!!!!!Возможно оставить*/
+}
+
+#msg_status {
+    color: white;
+/*
+    top: 0px;
+    left: 130px;
+    width: 670px;
+    height: 18px;
+*/
+	top: 480px;
+    left: 0px;
+    width: 800px;
+    height: 40px;
+    overflow-y: auto;
+/*    background: transparent; !!!!!!!Возможно оставить*/
+}
+
+.cntrl_line {
+    position: absolute;
+    top: 5px; /*12px;*/
+    left: 0; /*5px;*/
+    width: inherit; /*790px;*/
+    height: 18px;
+    border: none;
+    background-color: #B2C2D0;
+    color: darkgray;
+}
+#cntrl_line_w2_1 {
+	top: 74px;
+	height: 20px;
+	opacity: 0.4;
+}
+#cntrl_line_w2 {
+	top: 120px;
+	opacity: 0.4;
+}
+#cntrl_line_long {
+	width: 788;
+	opacity: 0.4;
+}
+#scales {
+    top: 400px;
+    left: 0px;
+    width: 800px;
+    height: 40px;
+    background: transparent;
+}
+
+#x10 {
+    position: absolute;
+    top: -6px;
+	left: 0px;
+    width: 195px;
+}
+#zero {
+    position: absolute;
+	top: -6px;
+    left: 212px;
+    width: 195px;
+}
+#tare {
+    position: absolute; 
+	top: -6px;	
+    left: 424px;
+    width: 195px;
+}
+
+#sum_cur {
+    position: absolute; 
+ 	top: 325px;
+    left: 655px; 
+    width: 130px;
+    height: 150px;
+	opacity: 1.0;
+}
+
+#sum_cur_val {
+    position: absolute; 
+	font-family:monospace;
+    font-size: 20px; 
+	top: 5px;
+	color: #0A2869;
+/*    left: 660px; */
+    width: 120px;
+ /*   height: 24px;*/
+}
+
+#brutto {
+    position: absolute; 
+    top: -4px;
+	left: 655px; 
+    width: 130px;
+/*    height: 24px;
+    opacity: 0.7;*/
+}
+
+#ind_str_brutto {
+    width: inheerit;
+    height: 16px;
+    color: teal;
+    background-color: transparent;
+    top: 4px;
+    text-align: center;
+    position: absolute;
+}
+
+
+#wagons {
+         display: none;
+/*	display: block; */
+	position: absolute;
+	top: 40px;
+	left: 40px;
+/*	left: 70px; */
+/*	width: 494px; */
+	width: 434px;
+	height: 30px;
+        border: 1px solid darkgray;
+        overflow: hidden;
+}
+
+#camera {
+	opacity: 0;
+    display: block;
+	position: absolute;
+	top: 36px;
+	left: 590px;
+	width: 40px;
+	height: 40px;
+	background-image: url("images/camera_r.png");
+	background-size: cover;
+	background-origin: inherit;
+	transition: all ease 100ms;
+}
+
+#scroll_left {
+    display: none;
+	position: absolute;
+	top: 36px;
+	left: 10px;
+	width: 20px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#scroll_right {
+         display: none;
+	position: absolute;
+	top: 36px;
+	left: 480px;
+	width: 20px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#new_car {
+         display: none;
+	position: absolute;
+	top: 36px;
+	left: 515px;
+	width: 100px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#scroll_wagons {
+    width: 20000px;
+    position: relative;
+    left: 0px;
+    transition: all ease 1s;
+}
+
+#static_window {
+    display: none;
+    position: relative;
+	width: 240px;
+	height: 140px;
+	top: 50px;
+    left: 180px;
+	border-radius: 4px 4px 4px 4px;    
+	border: 1px solid #8cacda;
+	background: white;
+}
+
+#lab_static_weight {
+	color: gray;
+	position: relative;
+	font-family: monospace;
+    font-size: 20px; 
+   	font-weight: 100%;
+   	padding-left: 4px;
+   	padding-top: 14px;
+   	display:inline-block;
+	float: left;
+}
+
+#static_weight {
+	color: darkblue;
+	position: relative;
+	font-family: monospace;
+    font-size: 300%; 
+   	font-weight: bold;
+   	padding-left: 50px;
+   	padding-top: 10px;
+	display:inline-block;  	
+}
+
+#lab_static_axis {
+	color: gray;
+	position: relative;
+	font-family: monospace;
+    font-size: 20px; 
+   	font-weight: 600;
+   	padding-left: 12px;
+   	padding-top: 4px;
+   	display:inline-block;
+}
+
+#static_cnt_axis {
+	color: darkblue;
+	position: relative;
+	font-family: monospace;
+    font-size: 22px; 
+   	font-weight: 1000;
+   	padding-left: 10px;
+   	padding-top: 4px;
+	display:inline-block;  	
+	cursor: pointer;
+}
+
+#save_car {
+	margin-top: 38px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 190px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  text-transform: uppercase;
+  font-size: 16px; 
+  color: green;
+  padding: 8px 14px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.show {display: block;}
+

@@ -1,0 +1,440 @@
+/* ===========================
+   Matrix Configuration Page
+   В стиле site_1
+   По макетам из PDF (параграф 8)
+   =========================== */
+
+/* Основной контейнер конфигуратора */
+#p_configuration,
+#p_scales_config {
+    width: 800px;
+    height: 480px;
+    position: relative;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+/* Верхняя панель с вкладками (Рисунок 8.3-1) */
+.config_tabs {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 790px;
+    height: 40px;
+    display: flex;
+    gap: 2px;
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #B2C2D0;
+}
+
+.tab_item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: 400;
+    text-align: center;
+    color: #2A5082;
+    background: #f8f8f8;
+    border: 1px solid #B2C2D0;
+    border-bottom: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tab_item:hover {
+    background: #E8ECF0;
+}
+
+.tab_item.active {
+    background: #FFFFFF;
+    border-bottom: 2px solid #FFFFFF;
+    color: #0A2869;
+    font-weight: 600;
+    margin-bottom: -2px;
+}
+
+/* Кнопки управления (правый верхний угол) */
+.config_buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 10;
+}
+
+.config_buttons .button {
+    width: 120px;
+    font-size: 14px;
+}
+
+/* Основная область: дерево + параметры */
+.config_main {
+    position: absolute;
+    top: 50px;
+    left: 5px;
+    width: 790px;
+    height: 425px;
+    display: flex;
+    gap: 5px;
+}
+
+/* Левая часть: дерево параметров */
+.config_tree {
+    width: 240px;
+    height: 425px;
+    background-color: rgb(229, 229, 229);
+    border-right: 3px solid #B2C2D0;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 5px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+/* Узлы дерева */
+.tree_node {
+    margin-bottom: 2px;
+}
+
+.tree_label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background 0.2s;
+    color: #2A5082;
+}
+
+.tree_label:hover {
+    background: rgba(178, 194, 208, 0.3);
+}
+
+.tree_label.active {
+    background: #2A5082;
+    color: white;
+    font-weight: 600;
+}
+
+.tree_icon {
+    font-size: 10px;
+    width: 12px;
+    text-align: center;
+}
+
+.tree_text {
+    flex: 1;
+}
+
+.tree_children {
+    margin-left: 18px;
+    border-left: 1px solid #B2C2D0;
+    padding-left: 4px;
+}
+
+/* Правая часть: параметры */
+.config_params {
+    flex: 1;
+    height: 425px;
+    background-color: rgb(229, 229, 229);
+    overflow-y: auto;
+    padding: 10px;
+    font-family: monospace;
+}
+
+/* Заголовок раздела параметров */
+.param_section_title {
+    margin-bottom: 15px;
+}
+
+.param_section_title h3 {
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2A5082;
+    margin: 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #B2C2D0;
+}
+
+/* Список платформ */
+.platform_list {
+    background-color: rgb(199, 199, 199);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+
+.list_header {
+    margin-bottom: 8px;
+}
+
+.list_header label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2A5082;
+}
+
+.platform_items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.platform_item {
+    display: flex;
+}
+
+/* Используем стили из site_1 для платформ */
+.platforma_on,
+.platforma_off {
+    width: 200px;
+    padding: 6px 10px;
+    font-family: monospace;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.platforma_on {
+    color: white;
+    background: #67A979;
+    border: 1px solid #67A979;
+}
+
+.platforma_off {
+    color: #2A5082;
+    background: white;
+    border: 1px solid #67A979;
+}
+
+.list_buttons {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-start;
+}
+
+/* Параметры платформы */
+.platform_params {
+    background-color: #FFFFFF;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #B2C2D0;
+    border-radius: 3px;
+}
+
+/* Строка параметра */
+.param_row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.param_label,
+.param_label_long {
+    font-size: 14px;
+    color: #2A5082;
+    min-width: 180px;
+}
+
+.param_label_long {
+    min-width: 220px;
+}
+
+.param_input,
+.param_input_small {
+    padding: 5px 8px;
+    border: 1px solid #B2C2D0;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 14px;
+    background: white;
+    color: #2A5082;
+}
+
+.param_input {
+    width: 300px;
+}
+
+.param_input_small {
+    width: 100px;
+    text-align: right;
+}
+
+.param_select {
+    padding: 5px 8px;
+    border: 1px solid #B2C2D0;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 14px;
+    background: white;
+    color: #2A5082;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+/* Список секций */
+.section_list {
+    background-color: rgb(219, 219, 219);
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+.section_header {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2A5082;
+    margin-bottom: 8px;
+}
+
+.section_item {
+    background: white;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #B2C2D0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.section_item.active {
+    background: #E8F4FF;
+    border-color: #67A979;
+}
+
+.section_name {
+    font-weight: 600;
+    color: #2A5082;
+    min-width: 100px;
+}
+
+.section_item label {
+    font-size: 12px;
+    color: #2A5082;
+}
+
+.section_buttons {
+    display: flex;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+/* Fieldset (как в PDF) */
+.param_fieldset {
+    background-color: #ddd;
+    border: 1px solid #B2C2D0;
+    border-radius: 3px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.param_fieldset legend {
+    color: #c00;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 8px;
+}
+
+/* Визуализация ГПУ (как на Рисунке 8.4.3-1, 8.4.3-2) */
+.gpu_visual {
+    background-color: #FFFFFF;
+    border: 1px solid #B2C2D0;
+    border-radius: 3px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.visual_title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2A5082;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.visual_canvas {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 80px;
+    gap: 0;
+    background: linear-gradient(to bottom, transparent 0%, transparent 70%, #8CACDA 70%, #8CACDA 100%);
+    padding-bottom: 5px;
+}
+
+.visual_section {
+    background: #67A979;
+    border: 2px solid #2A5082;
+    border-bottom: none;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.section_label {
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.visual_gap {
+    height: 2px;
+    background: repeating-linear-gradient(
+        to right,
+        #2A5082 0,
+        #2A5082 8px,
+        transparent 8px,
+        transparent 16px
+    );
+    margin-bottom: 20px;
+}
+
+/* Кнопки (в стиле site_1) */
+.button-small {
+    font-size: 12px;
+    padding: 4px 8px;
+    min-width: 80px;
+}
+
+/* Скроллбары */
+.config_tree::-webkit-scrollbar,
+.config_params::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.config_tree::-webkit-scrollbar-track,
+.config_params::-webkit-scrollbar-track {
+    background: #E5E5E5;
+}
+
+.config_tree::-webkit-scrollbar-thumb,
+.config_params::-webkit-scrollbar-thumb {
+    background: #B2C2D0;
+    border-radius: 4px;
+}
+
+.config_tree::-webkit-scrollbar-thumb:hover,
+.config_params::-webkit-scrollbar-thumb:hover {
+    background: #8CACDA;
+}

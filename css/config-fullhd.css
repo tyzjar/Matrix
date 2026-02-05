@@ -1,0 +1,662 @@
+/* ===========================
+   Matrix Configuration - Full HD
+   1920×1080, в стиле site_1
+   По макетам из PDF (параграф 8)
+   =========================== */
+
+/* Основной контейнер Full HD */
+#p_configuration {
+    width: 1920px;
+    height: 1080px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    font-family: monospace;
+}
+
+/* ===========================
+   ВЕРХНЯЯ ПАНЕЛЬ (Header)
+   =========================== */
+.config_header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    padding: 15px 20px;
+    background: #f8f8f8;
+    border-bottom: 3px solid #B2C2D0;
+}
+
+/* Вкладки разделов (Рисунок 8.3-1) */
+.config_tabs {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+}
+
+.tab_item {
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: #2A5082;
+    background: #E8ECF0;
+    border: 2px solid #B2C2D0;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    min-width: 140px;
+}
+
+.tab_item:hover {
+    background: #D8E2EB;
+}
+
+.tab_item.active {
+    background: #FFFFFF;
+    color: #0A2869;
+    font-weight: 600;
+    border-bottom: 3px solid #FFFFFF;
+    margin-bottom: -3px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Кнопки управления (правый верхний угол) */
+.config_actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.config_actions .button {
+    min-width: 160px;
+    font-size: 16px;
+}
+
+/* ===========================
+   ОСНОВНАЯ ОБЛАСТЬ
+   =========================== */
+.config_content {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 0;
+    overflow: hidden;
+}
+
+/* ===========================
+   ЛЕВАЯ ЧАСТЬ: Дерево
+   =========================== */
+.config_tree {
+    background-color: rgb(229, 229, 229);
+    border-right: 4px solid #B2C2D0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px 15px;
+}
+
+/* Узел дерева */
+.tree_node {
+    margin-bottom: 4px;
+}
+
+.tree_label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    color: #2A5082;
+    font-size: 15px;
+}
+
+.tree_label:hover {
+    background: rgba(103, 169, 121, 0.15);
+}
+
+.tree_label.active {
+    background: #2A5082;
+    color: white;
+    font-weight: 600;
+}
+
+.tree_icon {
+    font-size: 12px;
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.tree_text {
+    flex: 1;
+}
+
+.tree_children {
+    margin-left: 26px;
+    border-left: 2px solid #B2C2D0;
+    padding-left: 10px;
+    margin-top: 4px;
+}
+
+/* ===========================
+   ПРАВАЯ ЧАСТЬ: Параметры
+   =========================== */
+.config_params {
+    background-color: rgb(242, 242, 242);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 30px 40px;
+}
+
+/* Секция параметров */
+.param_section {
+    max-width: 1400px;
+}
+
+/* Заголовок секции */
+.section_title {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #B2C2D0;
+}
+
+.section_title h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2A5082;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section_desc {
+    font-size: 14px;
+    color: #67A979;
+    margin: 0;
+}
+
+/* Блок параметров */
+.param_block {
+    background: white;
+    border: 2px solid #B2C2D0;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.block_header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #E8ECF0;
+}
+
+.block_header label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2A5082;
+}
+
+/* Группа параметров */
+.param_group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Строка параметра */
+.param_row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.param_label,
+.param_label_long {
+    font-size: 15px;
+    color: #2A5082;
+    font-weight: 500;
+    min-width: 200px;
+}
+
+.param_label_long {
+    min-width: 280px;
+}
+
+.param_label_small {
+    font-size: 14px;
+    color: #2A5082;
+    margin-left: 10px;
+}
+
+.param_mult {
+    font-size: 16px;
+    color: #2A5082;
+    font-weight: 600;
+    margin: 0 5px;
+}
+
+.param_unit {
+    font-size: 14px;
+    color: #67A979;
+    margin-left: 8px;
+}
+
+/* Поля ввода */
+.param_input,
+.param_input_wide {
+    padding: 8px 12px;
+    border: 2px solid #B2C2D0;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 15px;
+    background: white;
+    color: #2A5082;
+    transition: border-color 0.2s;
+}
+
+.param_input:focus,
+.param_input_wide:focus,
+.input_num:focus,
+.param_select:focus {
+    outline: none;
+    border-color: #67A979;
+}
+
+.param_input {
+    width: 200px;
+}
+
+.param_input_wide {
+    width: 400px;
+}
+
+.input_num {
+    width: 120px;
+    padding: 8px 12px;
+    border: 2px solid #B2C2D0;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 15px;
+    background: white;
+    color: #2A5082;
+    text-align: right;
+}
+
+.param_select {
+    padding: 8px 12px;
+    border: 2px solid #B2C2D0;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 15px;
+    background: white;
+    color: #2A5082;
+    cursor: pointer;
+    min-width: 180px;
+}
+
+.param_select_small {
+    padding: 8px 12px;
+    border: 2px solid #B2C2D0;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 15px;
+    background: white;
+    color: #2A5082;
+    cursor: pointer;
+    width: 80px;
+    margin: 0 10px;
+}
+
+/* Fieldset (как в PDF) */
+.param_fieldset {
+    background-color: #ddd;
+    border: 2px solid #B2C2D0;
+    border-radius: 5px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.param_fieldset legend {
+    color: #c00;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 12px;
+}
+
+/* Подгруппа параметров */
+.param_subgroup {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #B2C2D0;
+}
+
+.param_subgroup:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.subgroup_title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2A5082;
+    margin-bottom: 12px;
+}
+
+/* ===========================
+   ПЛАТФОРМЫ
+   =========================== */
+.platform_selector {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.platform_list_items {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.platforma_on,
+.platforma_off {
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    min-width: 180px;
+}
+
+.platforma_on {
+    color: white;
+    background: #67A979;
+    border: 2px solid #67A979;
+    font-weight: 600;
+}
+
+.platforma_off {
+    color: #2A5082;
+    background: white;
+    border: 2px solid #B2C2D0;
+}
+
+.platforma_off:hover {
+    background: #E8F4E9;
+    border-color: #67A979;
+}
+
+.platform_actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* ===========================
+   СЕКЦИИ ПЛАТФОРМЫ
+   =========================== */
+.sections_list {
+    background-color: rgb(219, 219, 219);
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.sections_header {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2A5082;
+    margin-bottom: 15px;
+}
+
+.section_item {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 2px solid #B2C2D0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.section_item:hover {
+    background: #F8FFFE;
+}
+
+.section_item.active {
+    background: #E8F4FF;
+    border-color: #67A979;
+    border-width: 3px;
+}
+
+.section_num {
+    font-weight: 600;
+    color: #2A5082;
+    min-width: 120px;
+}
+
+.section_item label {
+    font-size: 14px;
+    color: #2A5082;
+    margin-left: 10px;
+}
+
+.section_actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* ===========================
+   ВИЗУАЛИЗАЦИЯ ГПУ
+   =========================== */
+.gpu_visual_block {
+    background: white;
+    border: 2px solid #B2C2D0;
+    border-radius: 5px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.visual_header {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2A5082;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.visual_canvas {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    height: 120px;
+    gap: 0;
+    background: linear-gradient(to bottom, transparent 0%, transparent 80%, #8CACDA 80%, #8CACDA 100%);
+    padding: 0 40px 10px 40px;
+}
+
+.visual_platform {
+    background: #67A979;
+    border: 3px solid #2A5082;
+    border-bottom: none;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.platform_label {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.visual_gap {
+    height: 3px;
+    background: repeating-linear-gradient(
+        to right,
+        #2A5082 0,
+        #2A5082 12px,
+        transparent 12px,
+        transparent 24px
+    );
+    margin-bottom: 30px;
+}
+
+/* ===========================
+   ПОЛЬЗОВАТЕЛИ (Раздел 8.7)
+   =========================== */
+.users_list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.user_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: white;
+    border: 2px solid #B2C2D0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.user_item:hover {
+    background: #F8FFFE;
+}
+
+.user_item.active {
+    background: #2A5082;
+    border-color: #2A5082;
+}
+
+.user_item.active .user_name,
+.user_item.active .user_role {
+    color: white;
+}
+
+.user_name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2A5082;
+}
+
+.user_role {
+    font-size: 14px;
+    color: #67A979;
+    padding: 4px 12px;
+    background: #E8F4E9;
+    border-radius: 3px;
+}
+
+/* ===========================
+   КНОПКИ (в стиле site_1)
+   =========================== */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: linear-gradient(to top, #9EAFD4, #F1F5FB);
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    margin: 0;
+    cursor: pointer;
+    border: 2px solid #8cacda;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.button:hover {
+    background: linear-gradient(to top, #8EAFC4, #E1E5EB);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+    background: linear-gradient(to bottom, #9EAFD4, #F1F5FB);
+}
+
+.button-small {
+    font-size: 13px;
+    padding: 6px 14px;
+}
+
+.button-add {
+    background: linear-gradient(to top, #67A979, #A8E6A1);
+    border-color: #67A979;
+}
+
+.button-delete {
+    background: linear-gradient(to top, #E74C3C, #F39C82);
+    border-color: #E74C3C;
+}
+
+/* ===========================
+   СКРОЛЛБАРЫ
+   =========================== */
+.config_tree::-webkit-scrollbar,
+.config_params::-webkit-scrollbar {
+    width: 12px;
+}
+
+.config_tree::-webkit-scrollbar-track,
+.config_params::-webkit-scrollbar-track {
+    background: #E5E5E5;
+}
+
+.config_tree::-webkit-scrollbar-thumb,
+.config_params::-webkit-scrollbar-thumb {
+    background: #B2C2D0;
+    border-radius: 6px;
+}
+
+.config_tree::-webkit-scrollbar-thumb:hover,
+.config_params::-webkit-scrollbar-thumb:hover {
+    background: #8CACDA;
+}
+
+/* ===========================
+   АДАПТИВНОСТЬ
+   =========================== */
+@media (max-width: 1920px) {
+    #p_configuration {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+@media (max-width: 1440px) {
+    .config_content {
+        grid-template-columns: 320px 1fr;
+    }
+    
+    .config_tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab_item {
+        min-width: 120px;
+        font-size: 12px;
+        padding: 10px 16px;
+    }
+}

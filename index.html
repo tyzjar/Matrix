@@ -1,0 +1,394 @@
+<html>
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Language" content="en"/>
+    <meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; "/>
+    <title>Matrix</title>
+    <link rel="shortcut icon" href="images/matrix_logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tune.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/results.css">
+    <link rel="stylesheet" href="css/logs.css">
+	<script src="scripts/jquery-3.7.1.min.js"></script>
+	<script src="scripts/paho-mqtt.js"></script>	
+    <script src="scripts/tune.js"></script>
+    <script src="scripts/diag.js"></script>
+    <script src="scripts/info.js"></script>
+    <script src="scripts/results.js"></script>
+    <script src="scripts/logs.js"></script>
+    <script src="scripts/matrix.js" defer></script>
+
+</head>
+<body>
+    <div id="p_matrix">
+        <div class="block" id="mode">
+	     	<hr class="cntrl_line" />
+            <div class="block_title" left="0px">Режим</div>
+	     	<div class="block_body" id="body_mode"></div>
+        </div>
+        
+		<div class="block" id="process">
+            <hr class="cntrl_line" />
+            <div class="block_title" >Процесс</div>
+	    	<div class="ind_contayner" id="state">
+			<hr id="ind_cntrl_line" />
+			<div class="ind_opac"></div>
+			<div class="ind_str" id="state_val">Ожидание</div>
+	    </div>
+	    
+		<div class="button" id="stop"><img src="images/icon_stop.png" width=20px height=20px margin="4px" float="left" alt="icon_stop"> СТОП</div>
+	    <div class="button" id="confirmation">СОХРАНИТЬ</div>
+	    <div class="button" id="reset">СБРОСИТЬ</div>
+        <div class="block_body" id="id_mode_type">
+<!--			
+		<div class="ind_contayner" id="direct">
+	        <hr id="ind_cntrl_line" />
+			<div class="ind_opac"></div>
+			<div class="ind_str" id="direct_val">Лево < > Право</div>
+		</div>
+
+		<div class="dropdown-content" id="dropdown_content_direct">
+		     <a href=# id="direct_auto">Лево < > Право</a>
+		     <a href=# id="direct_lr">Лево ->>- Право</a>
+		     <a href=# id="direct_rl">Лево -<<- Право</a>
+		</div>
+
+		<div class="ind_contayner" id="loco">
+		     <hr id="ind_cntrl_line" />
+		     <div class="ind_opac"></div>
+		     <div class="ind_str" id="loco_pos">Локо. не определен</div>
+		</div>
+		
+		<div class="dropdown-content" id="dropdown_content_loco_pos">
+		     <a href=# id="loco_pos_auto">Не определено</a>
+		     <a href=# id="loco_pos_pull">Локо. тянет</a>
+		     <a href=# id="loco_pos_push">Локо. толкает</a>
+		</div>
+
+        <div class="ind_contayner" id="dyn_axis">
+		     <hr id="ind_cntrl_line" />
+		     <div class="ind_opac"></div>
+		     <div class="ind_str" id="dyn_cnt_axis">Кол-во осей ?</div>
+		</div>
+
+		<div class="dropdown-content" id="dropdown_content_dyn_cnt_axis">
+	        <a href=# id="dyn_axis_2">2</a>
+	        <a href=# id="dyn_axis_4">4</a>
+	        <a href=# id="dyn_axis_6">6</a>
+	   	    <a href=# id="dyn_axis_8">8</a>
+		</div>
+
+		<div id="label_target_weight">Целевой вес:</div>
+		<input type="number" id="input_weight" min="0" max="100000" value="0">
+		<div class="button" id="start_process"> Старт</div>
+		<div class="button" id="stop_process"> Стоп</div>
+		
+		<div id="label_speed">Скорость</div>
+		<div class="ind_contayner" id="speed">
+		     <hr id="ind_cntrl_line" />
+		     <div class="ind_opac"></div>
+		     <div class="ind_str" id="speed_val">00.0 км/ч</div>
+		</div>
+		
+		<div class="ind_contayner" id="revers">
+		     <hr id="ind_cntrl_line" />
+		     <div class="ind_opac"></div>
+		     <div id="ind_str_revers_off">Реверс</div>
+		</div>
+		
+		<div class="ind_contayner" id="alarm">
+		     <hr id="ind_cntrl_line" />
+		     <div class="ind_opac"></div>
+		     <div class="ind_str" id="ind_str_alarm">Тревога!</div>
+		</div>
+-->
+			</div>
+        </div>
+
+        <div class="block" id="tune">
+             <hr class="cntrl_line" />
+	     <div class="block_title">Настройки</div>
+	     <div class="block_body">
+	          <div class="button" id="enter">Вход</div>
+	          <div class="button" id="info">ИНФО</div>
+	     </div>
+    </div>
+
+    <div class="block" id="train">
+        <hr class="cntrl_line" />
+<!--	 <div class="block_title_l_2">Состав</div> -->
+		<div class="block_title_l_2">№ ВЗВЕШИВАНИЯ</div>
+<!--	 <div class="block_title_l_220">Суммарная масса</div> -->
+	 	<div class="ind_contayner" id="num_train">
+          <hr id="ind_cntrl_line" />
+	      <div class="ind_opac"></div>
+	      <div class="ind_str" id="num_train_val">123456</div>
+     	</div>
+<!--		
+	 <div class="ind_contayner" id="sum_weight">
+          <hr id="ind_cntrl_line" />
+	      <div class="ind_opac"></div>
+	      <div class="ind_str" id="train_weight">0123456789</div>
+     </div>
+-->
+         <div class="button" id="new_train">НОВОЕ</div>
+         <div id="camera"></div>
+         <div class="button" id="scroll_left"> < </div>
+         <div id="wagons">
+	      	<div id="scroll_wagons"></div>
+	 	</div>
+         <div class="button" id="scroll_right"> > </div>
+         <div class="button" id="new_car"> +</div>
+	 	<div class="block_body">
+	      <div id="img_left_2"></div>
+	      <div id="img_left_4"></div>
+	      <div id="img_left_6"></div>
+	      <div id="img_left_8"></div>
+	      <div id="img_loco_left_right"></div>
+	      <div id="img_loco_right_left"></div>
+	      <div id="img_right_2"></div>
+	      <div id="img_right_4"></div>
+	      <div id="img_right_6"></div>
+	      <div id="img_right_8"></div>
+	 	</div>
+			 
+	 	<div id="results_train">Результаты взвешивания</div>
+			 
+     	<div id="static_window">
+          <div id="lab_static_weight">Масса:</div>
+			<div id="id_stability_static" class="weight_info"><span>~</span></div>
+			<div id="id_weight_static" class="weight_info"><pre>22360</pre></div>
+			<div id="id_weight_unit_static" class="weight_info"><span>кг</span></div>
+			<div class="clear"></div>						
+			<div id="id_weight_type_static" class="weight_info"><span>БРУТТО</span></div>
+			<div class="clear"></div>						
+			<div id="id_weight_tare_static" class="weight_info">Тара = <span>0<span> кг</span></div>
+
+
+<!--			<div id="static_weight"><span>22360</span></div> -->
+<!--			
+          <hr>
+          <div id="lab_static_axis">Кол.осей:</div>
+          <div id="static_cnt_axis">?</div>
+          <div class="dropdown-content" id="dropdown_content_cnt_axis">
+	        <a href=# id="axis_2">2</a>
+	        <a href=# id="axis_4">4</a>
+	        <a href=# id="axis_6">6</a>
+	     	<a href=# id="axis_8">8</a>
+	      </div>
+-->
+         <div class="button" id="save_car"> СОХРАНИТЬ</div>
+       </div>
+    </div>
+        <div class="block" id="journal">
+            <hr class="cntrl_line" />
+			<div class="block_title">Журналы</div>
+			<div class="block_body">
+				<div class="button" id="result">Результаты</div>
+				<div class="button" id="events">Тревоги</div>
+				<div class="button" id="log">Log-файлы</div>
+<!--				<div class="button" id="diagnostics">Диагностика</div> -->
+			</div>
+        </div>
+        
+		<div class="block" id="scales"></div>
+			 
+		
+        <div class="block" id="cntrl">
+            <hr class="cntrl_line" id="cntrl_line_long"/>
+            <div class="button" id="x10">x10</div>
+            <div class="button" id="zero">>0<</div>
+            <div class="button" id="tare">Т/С</div>
+<!--            
+			<div class="ind_contayner" id="brutto">
+                <hr id="ind_cntrl_line" />
+				<div class="ind_opac"></div>
+                <div class="ind_str">Брутто</div>
+            </div>
+-->
+        </div>
+
+        <div class="ind_contayner" id="sum_cur">
+			<hr class="cntrl_line" id="cntrl_line_w2_1"/>
+<!--			<hr class="cntrl_line" id="cntrl_line_w2"/> -->
+			<div id="id_range_number" class="range_info" >W<span>2</span></div>
+			<div id="id_range_max" class="range_info">Max= <span>30000</span> <span>кг</span></div>
+			<div id="id_range_min" class="range_info">Min= <span>15000</span> <span>кг</span></div>
+			<div id="id_range_discreteness" class="range_info">e=d= <span>10</span> <span>кг</span></div>
+			<div class="clear"></div>						
+			<div id="id_stability" class="weight_info"><span>~</span></div>
+			<div id="id_weight" class="weight_info"><pre>000000</pre></div>
+			<div id="id_weight_unit" class="weight_info"><span>кг</span></div>
+			<div class="clear"></div>						
+			<div id="id_weight_type" class="weight_info"><span>БРУТТО</span></div>
+			<div class="clear"></div>						
+			<div id="id_weight_tare" class="weight_info">Тара= <span>0<span>кг</span></div>
+
+<!--			<div id="id_weight_unit" class="weight_info"><pre><span>кг</span></pre></div> -->
+<!--			<div class="ind_str" id="sum_cur_val">~10000 кг</div> -->
+		</div>
+
+
+				
+<!-- The Modal -->
+	<div id="myModalAddTrain" class="modal">
+
+  <!-- Модальное содержание -->
+  		<div class="modal-content">
+    		<div class="modal-body">
+      			<p>Добавить новый состав?</p>
+				<button id="BtnYesTrain" class="modal-btn">ДА</button>
+				<button id="BtnNoTrain" class="modal-btn">НЕТ</button>
+    		</div>
+  		</div>
+	</div>
+
+	<div id="myModalAddCar" class="modal">
+
+  <!-- Модальное содержание -->
+  		<div class="modal-content">
+    		<div class="modal-body">
+      			<p>Добавить новый вагон?</p>
+				<button id="BtnYesCar" class="modal-btn">ДА</button>
+				<button id="BtnNoCar" class="modal-btn">НЕТ</button>
+    		</div>
+  		</div>
+	</div>
+
+	<div id="myModalResetResult" class="modal">
+
+  <!-- Модальное содержание -->
+  		<div class="modal-content">
+    		<div class="modal-body">
+      			<p>Сбросить результаты взвешивания?</p>
+				<button id="BtnYesReset" class="modal-btn">ДА</button>
+				<button id="BtnNoReset" class="modal-btn">НЕТ</button>
+    		</div>
+  		</div>
+	</div>
+
+
+	<div id="myModalX10" class="modal">
+
+  <!-- Модальное содержание -->
+  		<div class="modal-content">
+    		<div class="modal-body">
+    			<p>Пароль:</p>
+    			<input  type="password" placeholder="Пароль" autocomplete="off" class="input" id="input_pswd"> 
+    			<p id="chk_pswd">???</p>   		
+				<button id="BtnSendX10" class="modal-btn">Выполнить</button>
+				<button id="BtnCloseX10" class="modal-btn">НЕТ</button>
+    		</div>
+  		</div>
+	</div>
+
+        
+    </div>
+            <div class="block_status" id="msg_status">
+            <ul id="msg_list">
+            </ul>
+            </div>
+	
+    <div id="p_tune">
+		<hr class="cntrl_line" />
+		<div class="block_title">Настройки</div>
+		<div class="block_body">
+<!--		
+			<div class="tabs">
+				<div class="tabs__nav">
+					<a class="tabs__link tabs__link_active" href="#content-1">Аппаратура</a>
+					<a class="tabs__link" href="#content-2">Весы</a>
+					<a class="tabs__link" href="#content-3">Контроллеры</a>
+					<a class="tabs__link" href="#content-4">Приложения</a>
+					<a class="tabs__link" href="#content-5">Настройка сети</a>
+					<a class="tabs__link" href="#content-6">Результаты</a>
+					<a class="tabs__link" href="#content-7">Обслуживание</a>
+				</div>
+				<div class="tabs__content">
+					<div class="tabs__pane tabs__pane_show" id="content-1">
+						Содержимое 1...
+					</div>	
+					<div class="tabs__pane" id="content-2">
+						Содержимое 2...
+					</div>
+					<div class="tabs__pane" id="content-3">
+						Содержимое 3...
+					</div>
+					<div class="tabs__pane" id="content-4">
+						Содержимое 4...
+					</div>
+					<div class="tabs__pane" id="content-5">
+						Содержимое 5...
+					</div>
+					<div class="tabs__pane" id="content-6">
+						Содержимое 6...
+					</div>
+					<div class="tabs__pane" id="content-7">
+						Содержимое 7...
+					</div>
+				</div>
+			</div>
+-->		
+
+			<div class="block_l_5_t_405">
+				<div class="button" id="tune_exit">ВЫХОД</div>
+			</div>
+		</div>
+	</div>
+    <div id="p_results">
+		<hr class="cntrl_line" />
+		<div class="block_title">Результаты</div>
+		<div class="block_body">
+			<div id="oResultsInfo">
+				<div id="listProtocols"></div>
+				<div id="infoProtocol"></div>
+			</div>
+			<div class = "block_l_5_t_405">
+				<div class="button" id="result_exit">ВЫХОД</div>
+			</div>
+		</div>
+	</div>
+    <div id="p_alarms">
+		<hr class="cntrl_line" />
+		<div class="block_title">Тревоги</div>
+		<div class="block_body">
+        	<div class="block_l_5_t_405">
+				<div class="button" id="alarm_exit">ВЫХОД</div>
+        	</div>
+        </div>
+	</div>
+    <div id="p_logs">
+		<hr class="cntrl_line" />
+		<div class="block_title">LOG файлы</div>
+		<div class="block_body">
+			<div id="oLogsInfo">
+				<div id="listLogs"></div>
+				<div id="infoLog"></div>
+			</div>
+        	<div class="block_l_5_t_405">
+				<div class="button" id="log_exit">ВЫХОД</div>
+        	</div>
+        </div>
+	</div>
+        <div id="p_diagnostics">
+		<hr class="cntrl_line" />
+		<div class="block_title">Диагностика</div>
+		<div class="block_body">
+        	     <div class="block_l_5_t_405">
+		          <div class="button" id="diag_exit">ВЫХОД</div>
+        	          </div>
+                </div>
+	</div>
+        <div id="p_info">
+		<hr class="cntrl_line" />
+		<div class="block_title">Информация</div>
+		<div class="block_body">
+        	     <div class="block_l_5_t_405">
+		          <div class="button" id="info_exit">ВЫХОД</div>
+        	          </div>
+                </div>
+	</div>
+
+
+	</body>
+</html>
