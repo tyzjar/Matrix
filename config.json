@@ -1,0 +1,165 @@
+{
+  "version": "1.0",
+  "gpu": {
+    "comment": "",
+    "platforms": [
+      {
+        "id": 1,
+        "name": "Основная платформа",
+        "sections": [
+          { "id": 1, "length_mm": 3000, "nonWeighing_mm": 0 },
+          { "id": 2, "length_mm": 3000, "nonWeighing_mm": 800 }
+        ],
+        "nonWeighing_mm": 0
+      }
+    ]
+  },
+  "hardware": {
+    "channels": [
+      {
+        "id": 1,
+        "name": "ИК №1",
+        "comPort": 1,
+        "deviceType": "LDU78.1",
+        "sensors": {
+          "name": "Тензодатчики",
+          "type": "analog",
+          "count": 4
+        },
+        "connectedSections": ["П1.С1", "П1.С2"]
+      }
+    ],
+    "discreteInputs": [
+      {
+        "id": 1,
+        "name": "Датчик колеса 1",
+        "address": "0.1",
+        "scalesId": 1,
+        "assignment": "sensor",
+        "coordinate_mm": -500
+      }
+    ],
+    "discreteOutputs": [
+      {
+        "id": 1,
+        "name": "Светофор",
+        "address": "0.1",
+        "scalesId": 1,
+        "assignment": "inPosition"
+      }
+    ],
+    "externalModules": [
+      {
+        "id": 1,
+        "name": "Модуль ДВВ 1",
+        "ip": "192.168.0.100",
+        "subnet": "255.255.255.0"
+      }
+    ]
+  },
+  "scales": [
+    {
+      "id": 1,
+      "name": "Весы №1",
+      "channelIds": [1],
+      "units": "kg",
+      "internalDiscreteness": { "value": 1, "multiplier": 1 },
+      "rangesCount": 2,
+      "mode": "multiInterval",
+      "ranges": [
+        { "id": 1, "max": 15000, "multiplier": 1, "e": 10 },
+        { "id": 2, "max": 30000, "multiplier": 1, "e": 20 }
+      ],
+      "overload_d": 5,
+      "calibration": {
+        "points": [
+          { "type": "zero", "mass": 0, "counts": 0 },
+          { "type": "load", "mass": 10000, "counts": 0 }
+        ]
+      },
+      "zero": {
+        "powerOn": {
+          "mode": "current",
+          "range_percent": 10
+        },
+        "button": {
+          "enabled": true,
+          "range_percent": 2
+        },
+        "auto": {
+          "tracking_d": 0.5,
+          "period_sec": 0
+        },
+        "display": {
+          "centerZero_d": 0.25,
+          "underload_d": 9
+        }
+      },
+      "tare": {
+        "byButton": true,
+        "byKeyboard": true,
+        "powerOn": "clear",
+        "auto": {
+          "enabled": false,
+          "threshold": 100
+        },
+        "autoClear": {
+          "enabled": false,
+          "stabilityControl": true,
+          "threshold": 50,
+          "onZero": false,
+          "afterPrint": false
+        }
+      },
+      "filter": {
+        "type": "IIR",
+        "cutoffFreq": 4,
+        "averaging_n": 0
+      },
+      "stability": {
+        "range_d": 1,
+        "period_sec": 0.3
+      },
+      "print": {
+        "minWeight": 20,
+        "repeatPrint": true,
+        "lowerActivation": 10,
+        "stability": true
+      },
+      "autoPrint": {
+        "enabled": false,
+        "threshold": 100
+      },
+      "alibi": {
+        "enabled": true,
+        "maxRecords": 10000
+      }
+    }
+  ],
+  "terminal": {
+    "numericId": { "part1": 0, "part2": 0 },
+    "symbolicName": "Matrix_MX_020",
+    "owner": "",
+    "serialNumber": "2025-001-0123",
+    "softwareVersion": "1.0.5",
+    "users": [
+      { "id": 1, "name": "Супервизор", "role": "admin", "password": "" },
+      { "id": 2, "name": "Оператор", "role": "operator", "password": "" }
+    ],
+    "regional": {
+      "timezone": 3,
+      "ntpServer": "",
+      "autoTime": false,
+      "dateFormat": "YYYY-MM-DD",
+      "dateSeparator": ".",
+      "timeFormat": "24:MM:SS"
+    },
+    "datetime": {
+      "date": "2026-02-05",
+      "time": "14:30:00"
+    }
+  },
+  "service": {
+    "tacCounters": {}
+  }
+}
