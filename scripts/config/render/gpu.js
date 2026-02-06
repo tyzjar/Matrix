@@ -31,9 +31,9 @@ function renderGPU(cfg) {
         mainHtml += '<div class="' + cls + '">Платформа ' + p.id + '</div>';
     });
     mainHtml += '</div><div class="platform_actions">' +
-        '<div class="button button-add">ДОБАВИТЬ</div>' +
-        '<div class="button button-delete">УДАЛИТЬ</div>' +
-        '<div class="button">ОБНОВИТЬ</div></div></div></div>';
+        '<div class="button button-add" data-action="add-platform">ДОБАВИТЬ</div>' +
+        '<div class="button button-delete" data-action="del-platform">УДАЛИТЬ</div>' +
+        '<div class="button" data-action="refresh-gpu">ОБНОВИТЬ</div></div></div></div>';
 
     // визуализация
     mainHtml += '<div class="gpu_visual_block"><div class="visual_header">Схематичное изображение ГПУ:</div><div class="visual_canvas">';
@@ -68,7 +68,7 @@ function renderGPU(cfg) {
                 '<label>Длина, мм:</label><input type="number" class="input_num" data-field="length_mm" value="' + sec.length_mm + '" min="0"/>' +
                 '<label>Невзвеш, мм:</label><input type="number" class="input_num" data-field="nonWeighing_mm" value="' + sec.nonWeighing_mm + '" min="0"/></div>';
         });
-        h += '<div class="section_actions"><div class="button button-small">ДОБАВИТЬ</div><div class="button button-small">УДАЛИТЬ</div></div>' +
+        h += '<div class="section_actions"><div class="button button-small" data-action="add-section">ДОБАВИТЬ</div><div class="button button-small" data-action="del-section">УДАЛИТЬ</div></div>' +
             '</div></div></div></div>';
         $params.append(h);
     });

@@ -28,7 +28,7 @@ function renderHardware(cfg) {
             '<div class="param_row"><label class="param_label_long">Количество датчиков:</label><input type="number" class="input_num" data-field="sensors.count" data-ch-id="' + ch.id + '" value="' + (ch.sensors ? ch.sensors.count : 4) + '" min="1" max="8"/></div>' +
             '</fieldset>';
     });
-    chHtml += '<div class="param_row"><div class="button button-add">ДОБАВИТЬ</div><div class="button button-delete">УДАЛИТЬ</div></div></div></div>';
+    chHtml += '<div class="param_row"><div class="button button-add" data-action="add-channel">ДОБАВИТЬ</div><div class="button button-delete" data-action="del-channel">УДАЛИТЬ</div></div></div></div>';
     $ch.html(chHtml);
 
     // --- discrete inputs ---
@@ -57,7 +57,7 @@ function renderHardware(cfg) {
     if ((hw.discreteInputs || []).length === 0) {
         diHtml += '<p style="color:#888;padding:20px;">Дискретные входы не настроены.</p>';
     }
-    diHtml += '<div class="param_row"><div class="button button-add">ДОБАВИТЬ</div><div class="button button-delete">УДАЛИТЬ</div></div></div></div>';
+    diHtml += '<div class="param_row"><div class="button button-add" data-action="add-di">ДОБАВИТЬ</div><div class="button button-delete" data-action="del-di">УДАЛИТЬ</div></div></div></div>';
     $di.html(diHtml);
 
     // --- discrete outputs ---
@@ -90,7 +90,7 @@ function renderHardware(cfg) {
     if ((hw.discreteOutputs || []).length === 0) {
         doHtml += '<p style="color:#888;padding:20px;">Дискретные выходы не настроены.</p>';
     }
-    doHtml += '<div class="param_row"><div class="button button-add">ДОБАВИТЬ</div><div class="button button-delete">УДАЛИТЬ</div></div></div></div>';
+    doHtml += '<div class="param_row"><div class="button button-add" data-action="add-do">ДОБАВИТЬ</div><div class="button button-delete" data-action="del-do">УДАЛИТЬ</div></div></div></div>';
     $do.html(doHtml);
 
     // --- external modules ---
@@ -106,6 +106,6 @@ function renderHardware(cfg) {
     if ((hw.externalModules || []).length === 0) {
         emHtml += '<p style="color:#888;padding:20px;">Внешние модули ДВВ не настроены.</p>';
     }
-    emHtml += '<div class="param_row"><div class="button button-add">ДОБАВИТЬ</div><div class="button button-delete">УДАЛИТЬ</div></div></div></div>';
+    emHtml += '<div class="param_row"><div class="button button-add" data-action="add-module">ДОБАВИТЬ</div><div class="button button-delete" data-action="del-module">УДАЛИТЬ</div></div></div></div>';
     $em.html(emHtml);
 }

@@ -29,7 +29,7 @@ function renderTerminal(cfg) {
             '<span class="user_name">' + u.name + '</span>' +
             '<span class="user_role">' + (CA.ROLES[u.role] || u.role) + '</span></div>';
     });
-    uHtml += '</div><div class="param_row"><div class="button">ДОБАВИТЬ</div><div class="button">ИЗМЕНИТЬ</div><div class="button button-delete">УДАЛИТЬ</div></div></fieldset>';
+    uHtml += '</div><div class="param_row"><div class="button button-add" data-action="add-user">ДОБАВИТЬ</div><div class="button">ИЗМЕНИТЬ</div><div class="button button-delete" data-action="del-user">УДАЛИТЬ</div></div></fieldset>';
     $usr.html(uHtml);
 
     // --- regional ---
