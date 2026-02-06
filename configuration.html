@@ -24,814 +24,192 @@
             
             <!-- Кнопки управления (правый верхний угол) -->
             <div class="config_actions">
-                <div class="button">СОХРАНИТЬ</div>
-                <div class="button">ВЫХОД</div>
+                <div class="button" id="btn_save">СОХРАНИТЬ</div>
+                <div class="button" id="btn_exit">ВЫХОД</div>
             </div>
         </div>
 
-        <!-- ОСНОВНАЯ ОБЛАСТЬ: дерево + параметры -->
+        <!-- ОСНОВНАЯ ОБЛАСТЬ -->
         <div class="config_content">
-            
-            <!-- ЛЕВАЯ ЧАСТЬ: Дерево навигации -->
-            <div class="config_tree">
-                <!-- Конструкция ГПУ (8.4) -->
-                <div class="tree_node">
-                    <div class="tree_label expanded active" data-section="gpu">
-                        <span class="tree_icon">▼</span>
-                        <span class="tree_text">Конструкция ГПУ</span>
-                    </div>
-                    <div class="tree_children">
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="gpu-platform1">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Платформа 1</span>
-                            </div>
-                        </div>
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="gpu-platform2">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Платформа 2</span>
-                            </div>
-                        </div>
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="gpu-platform3">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Платформа 3</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Аппаратура (8.5) -->
-                <div class="tree_node">
-                    <div class="tree_label" data-section="hardware">
-                        <span class="tree_icon">►</span>
-                        <span class="tree_text">Аппаратура</span>
-                    </div>
-                    <div class="tree_children" style="display: none;">
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="hardware-channels">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Измерительные каналы</span>
-                            </div>
-                        </div>
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="hardware-inputs">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Дискретные входы</span>
-                            </div>
-                        </div>
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="hardware-outputs">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Дискретные выходы</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Весы (8.6) -->
-                <div class="tree_node">
-                    <div class="tree_label" data-section="scales">
-                        <span class="tree_icon">►</span>
-                        <span class="tree_text">Весы</span>
-                    </div>
-                    <div class="tree_children" style="display: none;">
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="scales-range">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Max нагрузка и дискретность</span>
-                            </div>
-                        </div>
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="scales-calibration">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Калибровка</span>
-                            </div>
-                        </div>
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="scales-zero">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Операции с нулем</span>
-                            </div>
-                        </div>
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="scales-tare">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Операции с тарой</span>
-                            </div>
-                        </div>
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="scales-filter">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Фильтр и стабильность</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Терминал (8.7) -->
-                <div class="tree_node">
-                    <div class="tree_label" data-section="terminal">
-                        <span class="tree_icon">►</span>
-                        <span class="tree_text">Терминал</span>
-                    </div>
-                    <div class="tree_children" style="display: none;">
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="terminal-general">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Общие данные</span>
-                            </div>
-                        </div>
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="terminal-users">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Пользователи</span>
-                            </div>
-                        </div>
-                        <div class="tree_node">
-                            <div class="tree_label" data-section="terminal-datetime">
-                                <span class="tree_icon">►</span>
-                                <span class="tree_text">Дата и время</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Обслуживание (8.8) -->
-                <div class="tree_node">
-                    <div class="tree_label" data-section="service">
-                        <span class="tree_icon">►</span>
-                        <span class="tree_text">Обслуживание</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ПРАВАЯ ЧАСТЬ: Параметры -->
-            <div class="config_params">
-                
-                <!-- РАЗДЕЛ: Конструкция ГПУ (8.4) -->
-                <div class="param_section" id="section_gpu">
-                    
+            <!-- ============================================== -->
+            <!-- РАЗДЕЛ: Конструкция ГПУ (8.4) -->
+            <!-- ============================================== -->
+            <div class="param_section" id="section_gpu">
+                <!-- Дерево генерируется динамически из renderGPU -->
+                <div class="section_tree"></div>
+                <div class="section_params">
                     <div class="section_title">
                         <h2>Конструкция грузоприемного устройства</h2>
                         <p class="section_desc">Описание конструкции ГПУ весов (платформы, секции, датчики)</p>
                     </div>
-
-                    <!-- Список грузоприемных платформ (Рисунок 8.4.3-1) -->
-                    <div class="param_block">
-                        <div class="block_header">
-                            <label>Список грузоприемных платформ</label>
-                        </div>
-                        
-                        <div class="platform_selector">
-                            <div class="platform_list_items">
-                                <div class="platforma_on">Платформа 1</div>
-                                <div class="platforma_off">Платформа 2</div>
-                                <div class="platforma_off">Платформа 3</div>
-                            </div>
-                            <div class="platform_actions">
-                                <div class="button button-add">ДОБАВИТЬ</div>
-                                <div class="button button-delete">УДАЛИТЬ</div>
-                                <div class="button">ОБНОВИТЬ</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Параметры выбранной платформы (Рисунок 8.4.3-2) -->
-                    <div class="param_block">
-                        <div class="block_header">
-                            <label>Параметры платформы №1</label>
-                        </div>
-
-                        <div class="param_group">
-                            <div class="param_row">
-                                <label class="param_label_long">Имя/комментарий:</label>
-                                <input type="text" class="param_input_wide" value="Основная платформа" placeholder="Введите комментарий"/>
-                            </div>
-
-                            <div class="param_row">
-                                <label class="param_label_long">Количество секций:</label>
-                                <select class="param_select">
-                                    <option value="1">1</option>
-                                    <option value="2" selected>2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
-
-                            <!-- Список секций платформы -->
-                            <div class="sections_list">
-                                <div class="sections_header">Секции платформы:</div>
-                                
-                                <div class="section_item active">
-                                    <span class="section_num">Секция №1</span>
-                                    <label>Длина, мм:</label>
-                                    <input type="number" class="input_num" value="3000" min="0"/>
-                                    <label>Невзвеш, мм:</label>
-                                    <input type="number" class="input_num" value="0" min="0"/>
-                                </div>
-
-                                <div class="section_item">
-                                    <span class="section_num">Секция №2</span>
-                                    <label>Длина, мм:</label>
-                                    <input type="number" class="input_num" value="3000" min="0"/>
-                                    <label>Невзвеш, мм:</label>
-                                    <input type="number" class="input_num" value="800" min="0"/>
-                                </div>
-
-                                <div class="section_actions">
-                                    <div class="button button-small">ДОБАВИТЬ</div>
-                                    <div class="button button-small">УДАЛИТЬ</div>
-                                </div>
-                            </div>
-
-                            <div class="param_row">
-                                <label class="param_label_long">Кол-во опор (датчиков):</label>
-                                <input type="number" class="input_num" value="8" min="0"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Визуализация ГПУ (Рисунок 8.4.3-2, внизу) -->
-                    <div class="gpu_visual_block">
-                        <div class="visual_header">Схематичное изображение грузоприемного устройства:</div>
-                        <div class="visual_canvas">
-                            <div class="visual_platform" style="width: 28%;">
-                                <div class="platform_label">П1.С1=3,0м</div>
-                            </div>
-                            <div class="visual_gap" style="width: 8%;"></div>
-                            <div class="visual_platform" style="width: 28%;">
-                                <div class="platform_label">П1.С2=3,0м</div>
-                            </div>
-                            <div class="visual_gap" style="width: 8%;"></div>
-                            <div class="visual_platform" style="width: 28%;">
-                                <div class="platform_label">П2.С1=3,0м</div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <!-- sub_section блоки генерируются динамически из renderGPU -->
                 </div>
+            </div>
 
-                <!-- РАЗДЕЛ: Аппаратура (8.5) -->
-                <div class="param_section" id="section_hardware" style="display: none;">
+            <!-- ============================================== -->
+            <!-- РАЗДЕЛ: Аппаратура (8.5) -->
+            <!-- ============================================== -->
+            <div class="param_section" id="section_hardware" style="display: none;">
+                <div class="section_tree">
+                    <div class="tree_item active" data-sub="hardware-channels">Измерительные каналы</div>
+                    <div class="tree_item" data-sub="hardware-inputs">Дискретные входы</div>
+                    <div class="tree_item" data-sub="hardware-outputs">Дискретные выходы</div>
+                    <div class="tree_item" data-sub="hardware-modules">Внешние модули ДВВ</div>
+                </div>
+                <div class="section_params">
                     <div class="section_title">
                         <h2>Аппаратура</h2>
                         <p class="section_desc">Конфигурирование измерительных каналов и внешних устройств</p>
                     </div>
-
-                    <div class="param_block">
-                        <div class="block_header">
-                            <label>Измерительные каналы</label>
-                        </div>
-
-                        <div class="param_group">
-                            <div class="param_row">
-                                <label class="param_label_long">Количество измерительных каналов:</label>
-                                <select class="param_select">
-                                    <option value="1">1</option>
-                                    <option value="2" selected>2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="8">8</option>
-                                </select>
-                            </div>
-
-                            <div class="param_row">
-                                <label class="param_label_long">Тип измерительного канала 1:</label>
-                                <select class="param_select" style="width: 250px;">
-                                    <option value="analog" selected>Аналоговый (УОАД)</option>
-                                    <option value="digital">Цифровой (УОЦД)</option>
-                                </select>
-                            </div>
-
-                            <div class="param_row">
-                                <label class="param_label_long">Количество датчиков на канал 1:</label>
-                                <input type="number" class="input_num" value="4" min="1" max="8"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="param_block">
-                        <div class="block_header">
-                            <label>Дискретные входы/выходы</label>
-                        </div>
-
-                        <div class="param_group">
-                            <div class="param_row">
-                                <label class="param_label_long">Количество дискретных входов:</label>
-                                <input type="number" class="input_num" value="8" min="0" max="32"/>
-                            </div>
-
-                            <div class="param_row">
-                                <label class="param_label_long">Количество дискретных выходов:</label>
-                                <input type="number" class="input_num" value="8" min="0" max="32"/>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="sub_section active" data-sub="hardware-channels"></div>
+                    <div class="sub_section" data-sub="hardware-inputs"></div>
+                    <div class="sub_section" data-sub="hardware-outputs"></div>
+                    <div class="sub_section" data-sub="hardware-modules"></div>
                 </div>
+            </div>
 
-                <!-- РАЗДЕЛ: Весы (8.6) -->
-                <div class="param_section" id="section_scales" style="display: none;">
+            <!-- ============================================== -->
+            <!-- РАЗДЕЛ: Весы (8.6) -->
+            <!-- ============================================== -->
+            <div class="param_section" id="section_scales" style="display: none;">
+                <div class="section_tree">
+                    <div class="tree_item active" data-sub="scales-assign">Назначение ИК</div>
+                    <div class="tree_item" data-sub="scales-range">Max и цена деления</div>
+                    <div class="tree_item" data-sub="scales-calibration">Калибровка</div>
+                    <div class="tree_item" data-sub="scales-zero">Операции с нулем</div>
+                    <div class="tree_item" data-sub="scales-tare">Операции с тарой</div>
+                    <div class="tree_item" data-sub="scales-filter">Фильтр и стабильность</div>
+                </div>
+                <div class="section_params">
                     <div class="section_title">
                         <h2>Настройка весов</h2>
                         <p class="section_desc">Калибровка, диапазоны, фильтры, операции с нулем и тарой</p>
                     </div>
-
-                    <!-- Max нагрузка и дискретность -->
-                    <fieldset class="param_fieldset">
-                        <legend>Max нагрузка и дискретность</legend>
-                        
-                        <div class="param_row">
-                            <label class="param_label">Единицы измерения:</label>
-                            <select class="param_select">
-                                <option value="1">г (грамм)</option>
-                                <option value="2" selected>кг (килограмм)</option>
-                                <option value="3">т (тонна)</option>
-                            </select>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Кол-во диапазонов:</label>
-                            <select class="param_select">
-                                <option value="1">1</option>
-                                <option value="2" selected>2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Режим:</label>
-                            <select class="param_select" style="width: 250px;">
-                                <option value="0" selected>Многоинтервальный</option>
-                                <option value="1">Многодиапазонный</option>
-                            </select>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Max диапазон 1:</label>
-                            <input type="number" class="input_num" value="15000" />
-                            <span class="param_mult">X</span>
-                            <select class="param_select_small">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="5">5</option>
-                            </select>
-                            <span class="param_label_small">e=d</span>
-                            <input type="number" class="input_num" value="10" />
-                            <span class="param_unit">кг</span>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Max диапазон 2:</label>
-                            <input type="number" class="input_num" value="30000" />
-                            <span class="param_mult">X</span>
-                            <select class="param_select_small">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="5">5</option>
-                            </select>
-                            <span class="param_label_small">e=d</span>
-                            <input type="number" class="input_num" value="20" />
-                            <span class="param_unit">кг</span>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Перегруз:</label>
-                            <input type="number" class="input_num" value="5" />
-                            <span class="param_unit">d</span>
-                        </div>
-                    </fieldset>
-
-                    <!-- Калибровка -->
-                    <fieldset class="param_fieldset">
-                        <legend>Калибровка</legend>
-                        
-                        <div class="param_row">
-                            <div class="button" style="width: 220px;">Калибровать нуль</div>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Масса груза:</label>
-                            <input type="number" class="input_num" value="10000" />
-                            <span class="param_unit">кг</span>
-                        </div>
-
-                        <div class="param_row">
-                            <div class="button" style="width: 220px;">Калибровать нагрузку</div>
-                        </div>
-
-                        <div class="param_row">
-                            <div class="button" style="width: 220px;">Коррекция нуля</div>
-                        </div>
-                    </fieldset>
-
-                    <!-- Параметры фильтра -->
-                    <fieldset class="param_fieldset">
-                        <legend>Параметры фильтра</legend>
-                        
-                        <div class="param_row">
-                            <label class="param_label">Тип фильтра:</label>
-                            <select class="param_select">
-                                <option value="0" selected>IIR</option>
-                                <option value="1">FIR</option>
-                            </select>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Частота среза (Гц):</label>
-                            <select class="param_select">
-                                <option value="1" selected>18Hz</option>
-                                <option value="2">8Hz</option>
-                                <option value="3">4Hz</option>
-                                <option value="4">3Hz</option>
-                                <option value="5">2Hz</option>
-                                <option value="6">1Hz</option>
-                                <option value="7">0.5Hz</option>
-                                <option value="8">0.25Hz</option>
-                            </select>
-                        </div>
-
-                        <div class="param_row">
-                            <div class="button" style="width: 180px;">Установить</div>
-                        </div>
-                    </fieldset>
-
-                    <!-- Параметры стабильности -->
-                    <fieldset class="param_fieldset">
-                        <legend>Параметры стабильности</legend>
-                        
-                        <div class="param_row">
-                            <label class="param_label">Размах колебаний:</label>
-                            <input type="number" class="input_num" value="1" step="0.1" />
-                            <span class="param_unit">d</span>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Временной интервал:</label>
-                            <input type="number" class="input_num" value="0.3" step="0.1" />
-                            <span class="param_unit">секунд</span>
-                        </div>
-
-                        <div class="param_row">
-                            <div class="button" style="width: 180px;">Установить</div>
-                        </div>
-                    </fieldset>
-
-                    <!-- Операции с нулем -->
-                    <fieldset class="param_fieldset">
-                        <legend>Операции с нулем</legend>
-                        
-                        <div class="param_subgroup">
-                            <div class="subgroup_title">При включении:</div>
-                            <div class="param_row">
-                                <label class="param_label">Установка нуля:</label>
-                                <select class="param_select">
-                                    <option value="0">Выкл.</option>
-                                    <option value="1" selected>Вкл.</option>
-                                </select>
-                            </div>
-                            <div class="param_row">
-                                <label class="param_label">Диапазон (+/- %Max):</label>
-                                <input type="number" class="input_num" value="10" />
-                                <span class="param_unit">%</span>
-                            </div>
-                        </div>
-
-                        <div class="param_subgroup">
-                            <div class="subgroup_title">Кнопка "Ноль":</div>
-                            <div class="param_row">
-                                <label class="param_label">Диапазон (+/- %Max):</label>
-                                <input type="number" class="input_num" value="2" />
-                                <span class="param_unit">%</span>
-                            </div>
-                        </div>
-
-                        <div class="param_subgroup">
-                            <div class="subgroup_title">Автоматическое слежение за нулем:</div>
-                            <div class="param_row">
-                                <label class="param_label">Включить:</label>
-                                <select class="param_select">
-                                    <option value="0">Выкл.</option>
-                                    <option value="1" selected>Вкл.</option>
-                                </select>
-                            </div>
-                            <div class="param_row">
-                                <label class="param_label">Диапазон:</label>
-                                <input type="number" class="input_num" value="0.5" step="0.1" />
-                                <span class="param_unit">d</span>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <!-- Операции с тарой -->
-                    <fieldset class="param_fieldset">
-                        <legend>Операции с тарой</legend>
-                        
-                        <div class="param_subgroup">
-                            <div class="subgroup_title">Типы операций тарирования:</div>
-                            <div class="param_row">
-                                <label class="param_label_long">По нажатию кнопки:</label>
-                                <select class="param_select">
-                                    <option value="0">Выкл.</option>
-                                    <option value="1" selected>Вкл.</option>
-                                </select>
-                            </div>
-                            <div class="param_row">
-                                <label class="param_label_long">Ввод с клавиатуры:</label>
-                                <select class="param_select">
-                                    <option value="0">Выкл.</option>
-                                    <option value="1" selected>Вкл.</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="param_subgroup">
-                            <div class="subgroup_title">Автоматическое тарирование:</div>
-                            <div class="param_row">
-                                <label class="param_label">Включить:</label>
-                                <select class="param_select">
-                                    <option value="0" selected>Выкл.</option>
-                                    <option value="1">Вкл.</option>
-                                </select>
-                            </div>
-                            <div class="param_row">
-                                <label class="param_label">Порог тарирования:</label>
-                                <input type="number" class="input_num" value="100" />
-                                <span class="param_unit">кг</span>
-                            </div>
-                        </div>
-                    </fieldset>
-
+                    <div class="sub_section active" data-sub="scales-assign"></div>
+                    <div class="sub_section" data-sub="scales-range"></div>
+                    <div class="sub_section" data-sub="scales-calibration"></div>
+                    <div class="sub_section" data-sub="scales-zero"></div>
+                    <div class="sub_section" data-sub="scales-tare"></div>
+                    <div class="sub_section" data-sub="scales-filter"></div>
                 </div>
+            </div>
 
-                <!-- РАЗДЕЛ: Терминал (8.7) -->
-                <div class="param_section" id="section_terminal" style="display: none;">
+            <!-- ============================================== -->
+            <!-- РАЗДЕЛ: Терминал (8.7) -->
+            <!-- ============================================== -->
+            <div class="param_section" id="section_terminal" style="display: none;">
+                <div class="section_tree">
+                    <div class="tree_item active" data-sub="terminal-general">Общие данные</div>
+                    <div class="tree_item" data-sub="terminal-users">Пользователи</div>
+                    <div class="tree_item" data-sub="terminal-regional">Региональные установки</div>
+                    <div class="tree_item" data-sub="terminal-datetime">Дата и время</div>
+                </div>
+                <div class="section_params">
                     <div class="section_title">
                         <h2>Настройки терминала</h2>
                         <p class="section_desc">Пользователи, региональные установки, дата и время</p>
                     </div>
-
-                    <!-- Общие данные -->
-                    <fieldset class="param_fieldset">
-                        <legend>Общие данные</legend>
-                        
-                        <div class="param_row">
-                            <label class="param_label_long">Название терминала:</label>
-                            <input type="text" class="param_input_wide" value="Matrix_MX_020" />
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label_long">Серийный номер:</label>
-                            <input type="text" class="param_input_wide" value="2025-001-0123" />
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label_long">Версия ПО:</label>
-                            <input type="text" class="param_input_wide" value="1.0.5" readonly style="background: #f0f0f0;" />
-                        </div>
-                    </fieldset>
-
-                    <!-- Пользователи -->
-                    <fieldset class="param_fieldset">
-                        <legend>Пользователи</legend>
-                        
-                        <div class="users_list">
-                            <div class="user_item active">
-                                <span class="user_name">Супервизор</span>
-                                <span class="user_role">Администратор</span>
-                            </div>
-                            <div class="user_item">
-                                <span class="user_name">Оператор</span>
-                                <span class="user_role">Оператор</span>
-                            </div>
-                            <div class="user_item">
-                                <span class="user_name">Гость</span>
-                                <span class="user_role">Только просмотр</span>
-                            </div>
-                        </div>
-
-                        <div class="param_row">
-                            <div class="button">ДОБАВИТЬ</div>
-                            <div class="button">ИЗМЕНИТЬ</div>
-                            <div class="button button-delete">УДАЛИТЬ</div>
-                        </div>
-                    </fieldset>
-
-                    <!-- Региональные настройки и дата/время -->
-                    <fieldset class="param_fieldset">
-                        <legend>Региональные установки</legend>
-                        
-                        <div class="param_row">
-                            <label class="param_label">Язык интерфейса:</label>
-                            <select class="param_select">
-                                <option value="ru" selected>Русский</option>
-                                <option value="en">English</option>
-                            </select>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Часовой пояс:</label>
-                            <select class="param_select" style="width: 250px;">
-                                <option value="0">UTC+0 (Лондон)</option>
-                                <option value="3" selected>UTC+3 (Москва)</option>
-                                <option value="5">UTC+5 (Екатеринбург)</option>
-                            </select>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Формат даты:</label>
-                            <select class="param_select">
-                                <option value="1">ДД.ММ.ГГГГ</option>
-                                <option value="2" selected>ГГГГ-ММ-ДД</option>
-                                <option value="3">ММ/ДД/ГГГГ</option>
-                            </select>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Формат времени:</label>
-                            <select class="param_select">
-                                <option value="1" selected>24 часа</option>
-                                <option value="2">12 часов (AM/PM)</option>
-                            </select>
-                        </div>
-                    </fieldset>
-
-                    <fieldset class="param_fieldset">
-                        <legend>Установка даты и времени</legend>
-                        
-                        <div class="param_row">
-                            <label class="param_label">Текущая дата:</label>
-                            <input type="date" class="param_input" value="2026-02-05" />
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label">Текущее время:</label>
-                            <input type="time" class="param_input" value="14:30" />
-                        </div>
-
-                        <div class="param_row">
-                            <div class="button" style="width: 200px;">Установить время</div>
-                            <div class="button" style="width: 180px;">Синхронизация NTP</div>
-                        </div>
-                    </fieldset>
+                    <div class="sub_section active" data-sub="terminal-general"></div>
+                    <div class="sub_section" data-sub="terminal-users"></div>
+                    <div class="sub_section" data-sub="terminal-regional"></div>
+                    <div class="sub_section" data-sub="terminal-datetime"></div>
                 </div>
+            </div>
 
-                <!-- РАЗДЕЛ: Обслуживание (8.8) -->
-                <div class="param_section" id="section_service" style="display: none;">
+            <!-- ============================================== -->
+            <!-- РАЗДЕЛ: Обслуживание (8.8) -->
+            <!-- ============================================== -->
+            <div class="param_section" id="section_service" style="display: none;">
+                <div class="section_tree">
+                    <div class="tree_item active" data-sub="service-diagnostics">Диагностика</div>
+                    <div class="tree_item" data-sub="service-backup">Резервное копирование</div>
+                    <div class="tree_item" data-sub="service-update">Обновление ПО</div>
+                    <div class="tree_item" data-sub="service-system">Системные действия</div>
+                </div>
+                <div class="section_params">
                     <div class="section_title">
                         <h2>Обслуживание</h2>
                         <p class="section_desc">Диагностика, обновление ПО, резервное копирование</p>
                     </div>
-
-                    <!-- Диагностика -->
-                    <fieldset class="param_fieldset">
-                        <legend>Диагностика системы</legend>
-                        
-                        <div class="param_row">
-                            <div class="button" style="width: 220px;">Проверка датчиков</div>
-                            <div class="button" style="width: 220px;">Проверка каналов</div>
-                        </div>
-
-                        <div class="param_row">
-                            <div class="button" style="width: 220px;">Тест входов/выходов</div>
-                            <div class="button" style="width: 220px;">Тест связи</div>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label_long">Журнал диагностики:</label>
-                            <div class="button" style="width: 150px;">Просмотр</div>
-                            <div class="button" style="width: 150px;">Очистить</div>
-                        </div>
-                    </fieldset>
-
-                    <!-- Резервное копирование -->
-                    <fieldset class="param_fieldset">
-                        <legend>Резервное копирование</legend>
-                        
-                        <div class="param_row">
-                            <label class="param_label_long">Резервная копия конфигурации:</label>
-                            <div class="button button-add" style="width: 180px;">Создать копию</div>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label_long">Восстановить конфигурацию:</label>
-                            <div class="button" style="width: 180px;">Загрузить копию</div>
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label_long">Экспорт результатов:</label>
-                            <div class="button" style="width: 180px;">Экспорт в CSV</div>
-                        </div>
-                    </fieldset>
-
-                    <!-- Обновление ПО -->
-                    <fieldset class="param_fieldset">
-                        <legend>Обновление программного обеспечения</legend>
-                        
-                        <div class="param_row">
-                            <label class="param_label_long">Текущая версия ПО:</label>
-                            <input type="text" class="param_input" value="1.0.5" readonly style="background: #f0f0f0;" />
-                        </div>
-
-                        <div class="param_row">
-                            <label class="param_label_long">Файл обновления:</label>
-                            <input type="file" class="param_input" accept=".bin,.hex,.fw" />
-                        </div>
-
-                        <div class="param_row">
-                            <div class="button button-add" style="width: 200px;">Загрузить обновление</div>
-                        </div>
-
-                        <div class="param_row" style="margin-top: 15px; padding: 10px; background: #fff3cd; border: 2px solid #F39C12; border-radius: 4px;">
-                            <label style="color: #856404; font-size: 13px;">⚠️ Внимание! Обновление ПО может занять несколько минут. Не выключайте питание во время обновления!</label>
-                        </div>
-                    </fieldset>
-
-                    <!-- Системные действия -->
-                    <fieldset class="param_fieldset">
-                        <legend>Системные действия</legend>
-                        
-                        <div class="param_row">
-                            <div class="button" style="width: 200px;">Перезагрузка</div>
-                            <div class="button button-delete" style="width: 250px;">Сброс до заводских</div>
-                        </div>
-                    </fieldset>
+                    <div class="sub_section active" data-sub="service-diagnostics">
+                        <fieldset class="param_fieldset">
+                            <legend>Диагностика системы</legend>
+                            <div class="param_row">
+                                <div class="button" style="width: 220px;">Проверка датчиков</div>
+                                <div class="button" style="width: 220px;">Проверка каналов</div>
+                            </div>
+                            <div class="param_row">
+                                <div class="button" style="width: 220px;">Тест входов/выходов</div>
+                                <div class="button" style="width: 220px;">Тест связи</div>
+                            </div>
+                            <div class="param_row">
+                                <label class="param_label_long">Журнал диагностики:</label>
+                                <div class="button" style="width: 150px;">Просмотр</div>
+                                <div class="button" style="width: 150px;">Очистить</div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="sub_section" data-sub="service-backup">
+                        <fieldset class="param_fieldset">
+                            <legend>Резервное копирование</legend>
+                            <div class="param_row">
+                                <label class="param_label_long">Резервная копия конфигурации:</label>
+                                <div class="button button-add" style="width: 180px;">Создать копию</div>
+                            </div>
+                            <div class="param_row">
+                                <label class="param_label_long">Восстановить конфигурацию:</label>
+                                <div class="button" style="width: 180px;">Загрузить копию</div>
+                            </div>
+                            <div class="param_row">
+                                <label class="param_label_long">Экспорт результатов:</label>
+                                <div class="button" style="width: 180px;">Экспорт в CSV</div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="sub_section" data-sub="service-update">
+                        <fieldset class="param_fieldset">
+                            <legend>Обновление программного обеспечения</legend>
+                            <div class="param_row">
+                                <label class="param_label_long">Текущая версия ПО:</label>
+                                <input type="text" class="param_input" value="1.0.5" readonly style="background: #f0f0f0;" />
+                            </div>
+                            <div class="param_row">
+                                <label class="param_label_long">Файл обновления:</label>
+                                <input type="file" class="param_input" accept=".bin,.hex,.fw" />
+                            </div>
+                            <div class="param_row">
+                                <div class="button button-add" style="width: 200px;">Загрузить обновление</div>
+                            </div>
+                            <div class="param_row" style="margin-top: 15px; padding: 10px; background: #fff3cd; border: 2px solid #F39C12; border-radius: 4px;">
+                                <label style="color: #856404; font-size: 13px;">Внимание! Обновление ПО может занять несколько минут. Не выключайте питание во время обновления!</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="sub_section" data-sub="service-system">
+                        <fieldset class="param_fieldset">
+                            <legend>Системные действия</legend>
+                            <div class="param_row">
+                                <div class="button" style="width: 200px;">Перезагрузка</div>
+                                <div class="button button-delete" style="width: 250px;">Сброс до заводских</div>
+                            </div>
+                        </fieldset>
+                    </div>
                 </div>
-
             </div>
-        </div>
 
-    </div>
+        </div><!-- /config_content -->
 
-    <script>
-        $(document).ready(function() {
-            // Переключение вкладок (верхняя панель)
-            $('.tab_item').click(function() {
-                $('.tab_item').removeClass('active');
-                $(this).addClass('active');
-                
-                var section = $(this).data('section');
-                $('.param_section').hide();
-                $('#section_' + section).show();
-                
-                // Обновляем дерево - активируем соответствующий раздел
-                $('.tree_label').removeClass('active');
-                $('.tree_label[data-section="' + section + '"]').addClass('active');
-            });
+    </div><!-- /p_configuration -->
 
-            // Переключение узлов дерева
-            $('.tree_label').click(function(e) {
-                e.stopPropagation();
-                
-                var section = $(this).data('section');
-                
-                // Если есть секция - переключаем на неё
-                if (section) {
-                    $('.tree_label').removeClass('active');
-                    $(this).addClass('active');
-                    
-                    $('.param_section').hide();
-                    $('#section_' + section).show();
-                    
-                    // Синхронизируем вкладку сверху
-                    var mainSection = section.split('-')[0];
-                    $('.tab_item').removeClass('active');
-                    $('.tab_item[data-section="' + mainSection + '"]').addClass('active');
-                }
-                
-                // Разворачивание/сворачивание дочерних элементов
-                var $children = $(this).siblings('.tree_children');
-                if ($children.length > 0) {
-                    if ($(this).hasClass('expanded')) {
-                        $(this).removeClass('expanded');
-                        $(this).find('.tree_icon').text('►');
-                        $children.slideUp(200);
-                    } else {
-                        $(this).addClass('expanded');
-                        $(this).find('.tree_icon').text('▼');
-                        $children.slideDown(200);
-                    }
-                }
-            });
-
-            // Переключение платформ
-            $(document).on('click', '.platforma_on, .platforma_off', function() {
-                $(this).closest('.platform_list_items').find('.platforma_on').removeClass('platforma_on').addClass('platforma_off');
-                $(this).removeClass('platforma_off').addClass('platforma_on');
-            });
-
-            // Переключение секций
-            $(document).on('click', '.section_item', function() {
-                $(this).closest('.sections_list').find('.section_item').removeClass('active');
-                $(this).addClass('active');
-            });
-
-            // Переключение пользователей
-            $(document).on('click', '.user_item', function() {
-                $('.user_item').removeClass('active');
-                $(this).addClass('active');
-            });
-        });
-    </script>
+    <!-- Модули конфигуратора -->
+    <script src="scripts/config/config-data.js"></script>
+    <script src="scripts/config/nav.js"></script>
+    <script src="scripts/config/render/gpu.js"></script>
+    <script src="scripts/config/render/hardware.js"></script>
+    <script src="scripts/config/render/scales.js"></script>
+    <script src="scripts/config/render/terminal.js"></script>
+    <script src="scripts/config/collect/collect.js"></script>
+    <script src="scripts/config/app.js"></script>
 </body>
 </html>

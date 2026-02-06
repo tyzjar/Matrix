@@ -80,10 +80,9 @@
    ОСНОВНАЯ ОБЛАСТЬ
    =========================== */
 .config_content {
-    display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 0;
+    display: block;
     overflow: hidden;
+    height: 100%;
 }
 
 /* ===========================
@@ -152,9 +151,104 @@
     padding: 30px 40px;
 }
 
-/* Секция параметров */
+/* Секция параметров (двухколоночный layout: дерево + параметры) */
 .param_section {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Локальное дерево навигации внутри секции */
+.section_tree {
+    background-color: rgb(229, 229, 229);
+    border-right: 4px solid #B2C2D0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px 15px;
+}
+
+.tree_item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    color: #2A5082;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.tree_item:hover {
+    background: rgba(103, 169, 121, 0.15);
+}
+
+.tree_item.active {
+    background: #2A5082;
+    color: white;
+    font-weight: 600;
+}
+
+/* Родительский узел дерева (с иконкой раскрытия) */
+.tree_item.parent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Дочерний узел дерева (вложенный) */
+.tree_item.child {
+    padding-left: 24px;
+}
+
+/* Вложенный список внутри section_tree */
+.section_tree .tree_children {
+    margin-left: 26px;
+    border-left: 2px solid #B2C2D0;
+    padding-left: 10px;
+    margin-top: 4px;
+}
+
+/* Параметры справа от дерева */
+.section_params {
+    background-color: rgb(242, 242, 242);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 30px 40px;
     max-width: 1400px;
+}
+
+/* Скроллбары для локального дерева и параметров */
+.section_tree::-webkit-scrollbar,
+.section_params::-webkit-scrollbar {
+    width: 12px;
+}
+
+.section_tree::-webkit-scrollbar-track,
+.section_params::-webkit-scrollbar-track {
+    background: #E5E5E5;
+}
+
+.section_tree::-webkit-scrollbar-thumb,
+.section_params::-webkit-scrollbar-thumb {
+    background: #B2C2D0;
+    border-radius: 6px;
+}
+
+.section_tree::-webkit-scrollbar-thumb:hover,
+.section_params::-webkit-scrollbar-thumb:hover {
+    background: #8CACDA;
+}
+
+/* Подразделы (переключаются деревом) */
+.sub_section {
+    display: none;
+}
+
+.sub_section.active {
+    display: block;
 }
 
 /* Заголовок секции */
@@ -364,13 +458,19 @@
 
 .platforma_on,
 .platforma_off {
-    padding: 10px 20px;
-    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 14px;
+    line-height: 1.2;
     text-align: center;
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.2s;
-    min-width: 180px;
+    min-width: 140px;
+    min-height: 40px;
+    box-sizing: border-box;
 }
 
 .platforma_on {
@@ -646,7 +746,7 @@
 }
 
 @media (max-width: 1440px) {
-    .config_content {
+    .param_section {
         grid-template-columns: 320px 1fr;
     }
     
