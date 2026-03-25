@@ -133,7 +133,43 @@ window.MATRIX_CONFIG = {
         "autoClear": { "enabled": true, "stabilityControl": true, "threshold": 200, "onZero": true, "afterPrint": false }
       },
       "filter": { "type": "IIR", "cutoffFreq": 3, "averaging_n": 2 },
-      "stability": { "range_d": 1.5, "period_sec": 0.5 }
+      "stability": { "range_d": 1.5, "period_sec": 0.5 },
+      "weighingMode": "motion",
+      "wheelSensors": [
+        { "id": 1, "inputId": 1, "offset_mm": -250, "activeZone_mm": 150 },
+        { "id": 2, "inputId": 3, "offset_mm": 1400, "activeZone_mm": 150 },
+        { "id": 3, "inputId": 4, "offset_mm": 2000, "activeZone_mm": 200 },
+        { "id": 4, "inputId": 2, "offset_mm": 2600, "activeZone_mm": 150 },
+        { "id": 5, "inputId": 5, "offset_mm": 4250, "activeZone_mm": 150 }
+      ]
+    },
+    {
+      "id": 2, "name": "Весы бункерные ВБ-10", "channelIds": [3], "units": "kg",
+      "internalDiscreteness": { "value": 1, "multiplier": 1 },
+      "rangesCount": 1, "mode": "multiInterval",
+      "ranges": [
+        { "id": 1, "max": 10000, "multiplier": 1, "e": 5 }
+      ],
+      "overload_d": 9,
+      "calibration": { "points": [
+        { "type": "zero", "mass": 0, "counts": 210000 },
+        { "type": "load", "mass": 5000, "counts": 980000 }
+      ]},
+      "zero": {
+        "powerOn": { "mode": "calibration", "range_percent": 5 },
+        "button": { "enabled": true, "range_percent": 2 },
+        "auto": { "tracking_d": 0.5, "period_sec": 5 },
+        "display": { "centerZero_d": 0.25, "underload_d": 9 }
+      },
+      "tare": {
+        "byButton": true, "byKeyboard": false, "powerOn": "clear",
+        "auto": { "enabled": false, "threshold": 100 },
+        "autoClear": { "enabled": false, "stabilityControl": true, "threshold": 50, "onZero": false, "afterPrint": false }
+      },
+      "filter": { "type": "FIR", "cutoffFreq": 5, "averaging_n": 3 },
+      "stability": { "range_d": 1, "period_sec": 0.3 },
+      "weighingMode": "static",
+      "wheelSensors": []
     }
   ],
   "terminal": {

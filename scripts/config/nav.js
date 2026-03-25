@@ -19,19 +19,19 @@ $(document).ready(function() {
         $s.find('.sub_section[data-sub="' + firstSub + '"]').addClass('active');
     });
 
-    // Клик по пункту локального дерева
+    // Клик по пункту локального дерева (поддержка многоуровневой вложенности)
     $(document).on('click', '.tree_item', function(e) {
         e.stopPropagation();
         var $tree = $(this).closest('.section_tree');
         var $section = $(this).closest('.param_section');
         var sub = $(this).data('sub');
         if ($(this).hasClass('parent')) {
-            var $ch = $(this).siblings('.tree_children');
+            var $ch = $(this).closest('.tree_node').children('.tree_children');
             if ($(this).hasClass('expanded')) {
-                $(this).removeClass('expanded').find('.tree_icon').text('►');
+                $(this).removeClass('expanded').find('.tree_icon').first().text('\u25BA');
                 $ch.slideUp(200);
             } else {
-                $(this).addClass('expanded').find('.tree_icon').text('▼');
+                $(this).addClass('expanded').find('.tree_icon').first().text('\u25BC');
                 $ch.slideDown(200);
             }
         }
@@ -59,5 +59,19 @@ $(document).ready(function() {
     $(document).on('click', '.user_item', function() {
         $(this).closest('.users_list').find('.user_item').removeClass('active');
         $(this).addClass('active');
+    });
+
+    // Переключение плиток весов в обзоре
+    $(document).on('click', '[data-scales-id]', function() {
+        $(this).closest('.platform_list_items').find('.platforma_on').removeClass('platforma_on').addClass('platforma_off');
+        $(this).removeClass('platforma_off').addClass('platforma_on');
+    });
+
+    // Переключение режима взвешивания (В СТАТИКЕ / В ДВИЖЕНИИ) — в контексте конкретных весов
+    $(document).on('click', '[data-field="weighingMode"]', function() {
+        var scaleId = $(this).data('scale-id');
+        var $container = $(this).closest('.sub_section');
+        $container.find('[data-field="weighingMode"]').removeClass('button-active');
+        $(this).addClass('button-active');
     });
 });

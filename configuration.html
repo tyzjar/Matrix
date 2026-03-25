@@ -73,25 +73,14 @@
             <!-- РАЗДЕЛ: Весы (8.6) -->
             <!-- ============================================== -->
             <div class="param_section" id="section_scales" style="display: none;">
-                <div class="section_tree">
-                    <div class="tree_item active" data-sub="scales-assign">Назначение ИК</div>
-                    <div class="tree_item" data-sub="scales-range">Max и цена деления</div>
-                    <div class="tree_item" data-sub="scales-calibration">Калибровка</div>
-                    <div class="tree_item" data-sub="scales-zero">Операции с нулем</div>
-                    <div class="tree_item" data-sub="scales-tare">Операции с тарой</div>
-                    <div class="tree_item" data-sub="scales-filter">Фильтр и стабильность</div>
-                </div>
+                <!-- Дерево генерируется динамически из renderScales -->
+                <div class="section_tree"></div>
                 <div class="section_params">
                     <div class="section_title">
                         <h2>Настройка весов</h2>
                         <p class="section_desc">Калибровка, диапазоны, фильтры, операции с нулем и тарой</p>
                     </div>
-                    <div class="sub_section active" data-sub="scales-assign"></div>
-                    <div class="sub_section" data-sub="scales-range"></div>
-                    <div class="sub_section" data-sub="scales-calibration"></div>
-                    <div class="sub_section" data-sub="scales-zero"></div>
-                    <div class="sub_section" data-sub="scales-tare"></div>
-                    <div class="sub_section" data-sub="scales-filter"></div>
+                    <!-- sub_section блоки генерируются динамически из renderScales -->
                 </div>
             </div>
 

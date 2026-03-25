@@ -45,11 +45,11 @@ $(document).ready(function() {
             alert('Должна остаться хотя бы одна платформа.');
             return;
         }
-        // Найти активную (platforma_on)
-        var activeName = $('.platforma_on').text();
+        var $active = $('.platforma_on');
+        var activeId = parseInt($active.data('platform-id'));
         var activeIdx = -1;
         cfg.gpu.platforms.forEach(function(p, i) {
-            if (activeName.indexOf(p.id) !== -1) activeIdx = i;
+            if (p.id === activeId) activeIdx = i;
         });
         if (activeIdx === -1) activeIdx = cfg.gpu.platforms.length - 1;
         cfg.gpu.platforms.splice(activeIdx, 1);
@@ -226,6 +226,101 @@ $(document).ready(function() {
         $('#section_hardware .sub_section').removeClass('active');
         $('#section_hardware .sub_section[data-sub="hardware-modules"]').addClass('active');
     });
+
+    // =============================================
+    //  ВЕСЫ — ДОБАВИТЬ / УДАЛИТЬ
+    // =============================================
+    $(document).on('click', '[data-action="add-scales"]', function() {
+        _syncBeforeAction();
+        var cfg = CA.currentConfig;
+        if (!cfg.scales) cfg.scales = [];
+        if (cfg.scales.length >= 4) {
+            alert('Максимальное количество весов — 4.');
+            return;
+        }
+        var newId = _nextId(cfg.scales);
+        cfg.scales.push({
+            id: newId, name: 'Весы №' + newId, channelIds: [], units: 'kg',
+            internalDiscreteness: { value: 1, multiplier: 1 },
+            rangesCount: 1, mode: 'multiInterval',
+            ranges: [{ id: 1, max: 10000, multiplier: 1, e: 10 }],
+            overload_d: 9,
+            calibration: { points: [
+                { type: 'zero', mass: 0, counts: 0 },
+                { type: 'load', mass: 5000, counts: 0 }
+            ]},
+            zero: {
+                powerOn: { mode: 'current', range_percent: 10 },
+                button: { enabled: true, range_percent: 2 },
+                auto: { tracking_d: 0.5, period_sec: 3 },
+                display: { centerZero_d: 0.25, underload_d: 9 }
+            },
+            tare: {
+                byButton: true, byKeyboard: true, powerOn: 'clear',
+                auto: { enabled: false, threshold: 100 },
+                autoClear: { enabled: false, stabilityControl: true, threshold: 50, onZero: false, afterPrint: false }
+            },
+            filter: { type: 'IIR', cutoffFreq: 3, averaging_n: 0 },
+            stability: { range_d: 1, period_sec: 0.3 },
+            weighingMode: 'static',
+            wheelSensors: []
+        });
+        renderScales(cfg);
+    });
+
+    $(document).on('click', '[data-action="del-scales"]', function() {
+        _syncBeforeAction();
+        var cfg = CA.currentConfig;
+        if (!cfg.scales || cfg.scales.length <= 1) {
+            alert('Должны остаться хотя бы одни весы.');
+            return;
+        }
+        var $active = $('#section_scales .platforma_on[data-scales-id]');
+        var activeId = $active.length ? parseInt($active.data('scales-id')) : 0;
+        var activeIdx = -1;
+        cfg.scales.forEach(function(s, i) { if (s.id === activeId) activeIdx = i; });
+        if (activeIdx === -1) activeIdx = cfg.scales.length - 1;
+        cfg.scales.splice(activeIdx, 1);
+        renderScales(cfg);
+    });
+
+    // =============================================
+    //  ДАТЧИКИ КОЛЁС (ДК) — ДОБАВИТЬ / УДАЛИТЬ
+    // =============================================
+    $(document).on('click', '[data-action="add-wk"]', function() {
+        _syncBeforeAction();
+        var cfg = CA.currentConfig;
+        var scaleId = parseInt($(this).data('scale-id'));
+        var scale = null;
+        (cfg.scales || []).forEach(function(s) { if (s.id === scaleId) scale = s; });
+        if (!scale) return;
+        if (!scale.wheelSensors) scale.wheelSensors = [];
+        var newId = _nextId(scale.wheelSensors);
+        scale.wheelSensors.push({ id: newId, inputId: 1, offset_mm: 0, activeZone_mm: 150 });
+        renderScales(cfg);
+        _navigateToScaleSub(scaleId, 'motion');
+    });
+
+    $(document).on('click', '[data-action="del-wk"]', function() {
+        _syncBeforeAction();
+        var cfg = CA.currentConfig;
+        var scaleId = parseInt($(this).data('scale-id'));
+        var scale = null;
+        (cfg.scales || []).forEach(function(s) { if (s.id === scaleId) scale = s; });
+        if (!scale || !scale.wheelSensors || scale.wheelSensors.length === 0) return;
+        scale.wheelSensors.pop();
+        renderScales(cfg);
+        _navigateToScaleSub(scaleId, 'motion');
+    });
+
+    function _navigateToScaleSub(scaleId, subName) {
+        var sub = 'scales-' + scaleId + '-' + subName;
+        var $tree = $('#section_scales .section_tree');
+        $tree.find('.tree_item').removeClass('active');
+        $tree.find('[data-sub="' + sub + '"]').addClass('active');
+        $('#section_scales .sub_section').removeClass('active');
+        $('#section_scales .sub_section[data-sub="' + sub + '"]').addClass('active');
+    }
 
     // =============================================
     //  ПОЛЬЗОВАТЕЛИ — ДОБАВИТЬ / УДАЛИТЬ

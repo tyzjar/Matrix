@@ -28,7 +28,7 @@ function renderGPU(cfg) {
         '<div class="platform_selector"><div class="platform_list_items">';
     platforms.forEach(function(p, i) {
         var cls = (i === 0) ? 'platforma_on' : 'platforma_off';
-        mainHtml += '<div class="' + cls + '">Платформа ' + p.id + '</div>';
+        mainHtml += '<div class="' + cls + '" data-platform-id="' + p.id + '">Платформа ' + p.id + '</div>';
     });
     mainHtml += '</div><div class="platform_actions">' +
         '<div class="button button-add" data-action="add-platform">ДОБАВИТЬ</div>' +
@@ -39,9 +39,14 @@ function renderGPU(cfg) {
     mainHtml += '<div class="gpu_visual_block"><div class="visual_header">Схематичное изображение ГПУ:</div><div class="visual_canvas">';
     platforms.forEach(function(p, pi) {
         (p.sections || []).forEach(function(sec, si) {
-            if (pi > 0 || si > 0) {
-                var gapW = sec.nonWeighing_mm > 0 ? Math.max(4, Math.round(sec.nonWeighing_mm / 100)) : 4;
+            if (pi > 0 && si === 0) {
+                var gapMm = p.nonWeighing_mm || 0;
+                var gapW = gapMm > 0 ? Math.max(4, Math.round(gapMm / 100)) : 4;
                 mainHtml += '<div class="visual_gap" style="width:' + gapW + '%;"></div>';
+            } else if (si > 0) {
+                var secGapMm = sec.nonWeighing_mm || 0;
+                var secGapW = secGapMm > 0 ? Math.max(3, Math.round(secGapMm / 100)) : 3;
+                mainHtml += '<div class="visual_gap" style="width:' + secGapW + '%;"></div>';
             }
             var platW = Math.max(10, Math.round(sec.length_mm / 200));
             mainHtml += '<div class="visual_platform" style="width:' + platW + '%;"><div class="platform_label">П' + p.id + '.С' + sec.id + '=' + (sec.length_mm / 1000).toFixed(1) + 'м</div></div>';

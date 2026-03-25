@@ -46,12 +46,17 @@ function renderHardware(cfg) {
     (hw.discreteInputs || []).forEach(function(inp) {
         var assignOpts = '';
         DI_OPTIONS.forEach(function(o) { assignOpts += '<option value="' + o.v + '"' + _sel(o.v, inp.assignment) + '>' + o.t + '</option>'; });
+        var addrParts = (inp.address || '0.1').split('.');
+        var addrModule = addrParts[0] || '0';
+        var addrPort = addrParts[1] || '1';
         diHtml += '<fieldset class="param_fieldset"><legend>ДВХ №' + inp.id + ' — ' + (inp.name || '') + '</legend>' +
             '<div class="param_row"><label class="param_label_long">Имя:</label><input type="text" class="param_input_wide" data-field="name" data-di-id="' + inp.id + '" value="' + (inp.name || '') + '"/></div>' +
-            '<div class="param_row"><label class="param_label_long">Адрес:</label><input type="text" class="param_input" data-field="address" data-di-id="' + inp.id + '" value="' + (inp.address || '') + '"/></div>' +
+            '<div class="param_row"><label class="param_label_long">Адрес:</label>' +
+            '<input type="number" class="input_num" data-field="addressModule" data-di-id="' + inp.id + '" value="' + addrModule + '" min="0" max="8" style="width:60px"/>' +
+            '<span class="param_dot"> . </span>' +
+            '<input type="number" class="input_num" data-field="addressPort" data-di-id="' + inp.id + '" value="' + addrPort + '" min="1" max="32" style="width:60px"/></div>' +
             '<div class="param_row"><label class="param_label_long">Весы №:</label><input type="number" class="input_num" data-field="scalesId" data-di-id="' + inp.id + '" value="' + (inp.scalesId || 1) + '"/></div>' +
             '<div class="param_row"><label class="param_label_long">Назначение:</label><select class="param_select" data-field="assignment" data-di-id="' + inp.id + '">' + assignOpts + '</select></div>' +
-            '<div class="param_row"><label class="param_label_long">Координата, мм:</label><input type="number" class="input_num" data-field="coordinate_mm" data-di-id="' + inp.id + '" value="' + (inp.coordinate_mm || 0) + '"/></div>' +
             '</fieldset>';
     });
     if ((hw.discreteInputs || []).length === 0) {
@@ -80,9 +85,15 @@ function renderHardware(cfg) {
     (hw.discreteOutputs || []).forEach(function(out) {
         var assignOpts = '';
         DO_OPTIONS.forEach(function(o) { assignOpts += '<option value="' + o.v + '"' + _sel(o.v, out.assignment) + '>' + o.t + '</option>'; });
+        var addrParts = (out.address || '0.1').split('.');
+        var addrModule = addrParts[0] || '0';
+        var addrPort = addrParts[1] || '1';
         doHtml += '<fieldset class="param_fieldset"><legend>ДВЫХ №' + out.id + ' — ' + (out.name || '') + '</legend>' +
             '<div class="param_row"><label class="param_label_long">Имя:</label><input type="text" class="param_input_wide" data-field="name" data-do-id="' + out.id + '" value="' + (out.name || '') + '"/></div>' +
-            '<div class="param_row"><label class="param_label_long">Адрес:</label><input type="text" class="param_input" data-field="address" data-do-id="' + out.id + '" value="' + (out.address || '') + '"/></div>' +
+            '<div class="param_row"><label class="param_label_long">Адрес:</label>' +
+            '<input type="number" class="input_num" data-field="addressModule" data-do-id="' + out.id + '" value="' + addrModule + '" min="0" max="8" style="width:60px"/>' +
+            '<span class="param_dot"> . </span>' +
+            '<input type="number" class="input_num" data-field="addressPort" data-do-id="' + out.id + '" value="' + addrPort + '" min="1" max="32" style="width:60px"/></div>' +
             '<div class="param_row"><label class="param_label_long">Весы №:</label><input type="number" class="input_num" data-field="scalesId" data-do-id="' + out.id + '" value="' + (out.scalesId || 1) + '"/></div>' +
             '<div class="param_row"><label class="param_label_long">Назначение:</label><select class="param_select" data-field="assignment" data-do-id="' + out.id + '">' + assignOpts + '</select></div>' +
             '</fieldset>';
