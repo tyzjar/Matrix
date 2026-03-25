@@ -98,7 +98,7 @@ function _renderScaleParams(cfg, s, $params) {
             var checked = channelIds.indexOf(ch.id) !== -1 ? ' checked' : '';
             gHtml += '<div class="param_row">' +
                 '<input type="checkbox" data-field="channel-check" data-ch-id="' + ch.id + '"' + checked + ' style="margin-right:8px;width:18px;height:18px;"/>' +
-                '<label>\u2116' + ch.id + ' \u2014 ' + (ch.name || '\u0418\u041a \u2116' + ch.id) + '</label></div>';
+                '<label>' + (ch.name || '\u0418\u041a \u2116' + ch.id) + '</label></div>';
         });
     }
     gHtml += '</div></fieldset></div>';

@@ -123,6 +123,7 @@ $(document).ready(function() {
             sensors: { name: '', type: 'analog', count: 4 }, connectedSections: []
         });
         renderHardware(cfg);
+        renderScales(cfg);
     });
 
     $(document).on('click', '[data-action="del-channel"]', function() {
@@ -131,6 +132,7 @@ $(document).ready(function() {
         if (!cfg.hardware.channels || cfg.hardware.channels.length === 0) return;
         cfg.hardware.channels.pop();
         renderHardware(cfg);
+        renderScales(cfg);
     });
 
     // =============================================
